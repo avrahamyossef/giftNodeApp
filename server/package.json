@@ -25,5 +25,16 @@
   },
   "devDependencies": {
     "nodemon": "^1.17.2"
-  }
+  },
+  "engines": {
+    "node": "8.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avrahamyossef/giftNodeApp.git"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+  ]
 }
