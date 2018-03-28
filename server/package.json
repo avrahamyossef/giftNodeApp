@@ -10,7 +10,7 @@
   "author": "Avraham Yossef",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "1.0.3",
     "boom": "^4.3.1",
     "glob": "^7.1.2",
     "hapi": "^16.6.3",
@@ -25,5 +25,16 @@
   },
   "devDependencies": {
     "nodemon": "^1.17.2"
-  }
+  },
+  "engines": {
+    "node": "8.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avrahamyossef/giftNodeApp.git"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+  ]
 }
