@@ -12,7 +12,7 @@ const Boom = require('boom');
 const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
-  port: (process.env.port || 3000)
+  port: (process.env.port || 8080)
 });
 //const server = new Hapi.Server();
 
