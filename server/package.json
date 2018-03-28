@@ -10,7 +10,7 @@
   "author": "Avraham Yossef",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "1.0.3",
     "boom": "^4.3.1",
     "glob": "^7.1.2",
     "hapi": "^16.6.3",
