@@ -26,12 +26,7 @@
   "devDependencies": {
     "nodemon": "^1.17.2"
   },
-  "peerDependencies": {
-    "hapi": "16.6.3",
-    "hapi-auth-basic": "^5.0.0",
-    "hapi-auth-cookie": "^8.1.0",
-    "hapi-auth-jwt": "^4.0.0"
-  },
+
   "engines": {
     "node": "8.10.0"
   },
