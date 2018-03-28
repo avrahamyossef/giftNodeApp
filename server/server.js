@@ -11,7 +11,7 @@ const Boom = require('boom');
 // // Create a server with a host and port
 const server = new Hapi.Server();
 server.connection({
-  host: '0.0.0.0',
+  host: 'localhost',
   port: (process.env.port || 3000)
 });
 //const server = new Hapi.Server();
