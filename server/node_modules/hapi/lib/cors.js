@@ -4,7 +4,7 @@
 
 const Boom = require('boom');
 const Hoek = require('hoek');
-const Defaults = require('./defaults');
+
 let Route = null;                           // Delayed load due to circular dependency
 
 
@@ -15,11 +15,11 @@ const internals = {};
 
 exports.route = function (options) {
 
-    const settings = Hoek.applyToDefaults(Defaults.cors, options);
-    if (!settings) {
+    if (!options) {
         return false;
     }
 
+    const settings = Hoek.clone(options);
     settings._headers = settings.headers.concat(settings.additionalHeaders);
     settings._headersString = settings._headers.join(',');
     for (let i = 0; i < settings._headers.length; ++i) {
@@ -32,7 +32,10 @@ exports.route = function (options) {
 
     settings._exposedHeaders = settings.exposedHeaders.concat(settings.additionalExposedHeaders).join(',');
 
-    if (settings.origin.indexOf('*') !== -1) {
+    if (settings.origin === 'ignore') {
+        settings._origin = false;
+    }
+    else if (settings.origin.indexOf('*') !== -1) {
         Hoek.assert(settings.origin.length === 1, 'Cannot specify cors.origin * together with other values');
         settings._origin = true;
     }
@@ -57,7 +60,7 @@ exports.route = function (options) {
 };
 
 
-exports.options = function (route, connection, server) {
+exports.options = function (route, server) {
 
     if (route.method === 'options' ||
         !route.settings.cors) {
@@ -65,53 +68,56 @@ exports.options = function (route, connection, server) {
         return;
     }
 
-    exports.handler(connection);
+    exports.handler(server);
 };
 
 
-exports.handler = function (connection) {
+exports.handler = function (server) {
 
     Route = Route || require('./route');
 
-    if (connection._router.specials.options) {
+    if (server._core.router.specials.options) {
         return;
     }
 
-    const route = new Route({ method: '_special', path: '/{p*}', handler: internals.handler }, connection, connection.server, { special: true });
-    connection._router.special('options', route);
+    const route = new Route({ method: '_special', path: '/{p*}', handler: internals.handler }, server, { special: true });
+    server._core.router.special('options', route);
 };
 
 
-internals.handler = function (request, reply) {
+internals.handler = function (request, h) {
 
     // Validate CORS preflight request
 
-    const origin = request.headers.origin;
-    if (!origin) {
-        return reply(Boom.notFound('CORS error: Missing Origin header'));
-    }
-
     const method = request.headers['access-control-request-method'];
     if (!method) {
-        return reply(Boom.notFound('CORS error: Missing Access-Control-Request-Method header'));
+        throw Boom.notFound('CORS error: Missing Access-Control-Request-Method header');
     }
 
     // Lookup route
 
-    const route = request.connection.match(method, request.path, request.info.hostname);
+    const route = request.server.match(method, request.path, request.info.hostname);
     if (!route) {
-        return reply(Boom.notFound());
+        throw Boom.notFound();
     }
 
     const settings = route.settings.cors;
     if (!settings) {
-        return reply({ message: 'CORS is disabled for this route' });
+        return { message: 'CORS is disabled for this route' };
     }
 
     // Validate Origin header
 
+    const origin = request.headers.origin;
+
+    if (!origin &&
+        settings._origin !== false) {
+
+        throw Boom.notFound('CORS error: Missing Origin header');
+    }
+
     if (!exports.matchOrigin(origin, settings)) {
-        return reply({ message: 'CORS error: Origin not allowed' });
+        return { message: 'CORS error: Origin not allowed' };
     }
 
     // Validate allowed headers
@@ -120,14 +126,14 @@ internals.handler = function (request, reply) {
     if (headers) {
         headers = headers.toLowerCase().split(/\s*,\s*/);
         if (Hoek.intersect(headers, settings._headers).length !== headers.length) {
-            return reply({ message: 'CORS error: Some headers are not allowed' });
+            return { message: 'CORS error: Some headers are not allowed' };
         }
     }
 
     // Reply with the route CORS headers
 
-    const response = reply();
-    response._header('access-control-allow-origin', request.headers.origin);
+    const response = h.response();
+    response._header('access-control-allow-origin', settings._origin ? origin : '*');
     response._header('access-control-allow-methods', method);
     response._header('access-control-allow-headers', settings._headersString);
     response._header('access-control-max-age', settings.maxAge);
@@ -139,28 +145,25 @@ internals.handler = function (request, reply) {
     if (settings._exposedHeaders) {
         response._header('access-control-expose-headers', settings._exposedHeaders);
     }
+
+    return response;
 };
 
 
-exports.headers = function (response) {
-
-    const request = response.request;
-    if (request._route._special) {
-        return;
-    }
+exports.headers = function (request) {
 
     const settings = request.route.settings.cors;
-    if (!settings) {
-        return;
-    }
+    const response = request.response;
 
-    response.vary('origin');
+    if (settings._origin !== false) {
+        response.vary('origin');
+    }
 
     if (!request.info.cors.isOriginMatch) {
         return;
     }
 
-    response._header('access-control-allow-origin', request.headers.origin);
+    response._header('access-control-allow-origin', settings._origin ? request.headers.origin : '*');
 
     if (settings.credentials) {
         response._header('access-control-allow-credentials', 'true');
@@ -174,12 +177,14 @@ exports.headers = function (response) {
 
 exports.matchOrigin = function (origin, settings) {
 
-    if (!origin) {
-        return false;
+    if (settings._origin === true ||
+        settings._origin === false) {
+
+        return true;
     }
 
-    if (settings._origin === true) {
-        return true;
+    if (!origin) {
+        return false;
     }
 
     if (settings._origin.qualified.indexOf(origin) !== -1) {
