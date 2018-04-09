@@ -2,7 +2,7 @@
 var Events = require('../models/events.js');
 
 
-// 2. Get an individual Person's public information
+// 2. Get an individual evetn's public information
 exports.list = function (req, res) {
     Events.find()
         .select('-password -__v')
