@@ -14,7 +14,7 @@ module.exports = function (app) {
     app.post('/auth/signup', Auth.signup);
 
     // 5. Application Routes
-    app.get('/events', ensureAuthenticated, Events.list);
+    app.get('/events', Events.list);
     //  app.post('/auth/login', ensureAuthenticated, Auth.login);
 
 };
