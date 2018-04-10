@@ -25,7 +25,15 @@ exports.signup = function (req, res) {
             var token = jwt.sign({ id: user._id }, config.TOKEN_SECRET, {
                 expiresIn: 86400 // expires in 24 hours
             });
-            res.status(200).send({ auth: true, token: token });
+            res.status(200).send({
+                auth: true,
+                token: token,
+                currentUser: {
+                    id: user._id,
+                    userName: user.username,
+                    email: user.email,
+                }
+            });
         });
 };
 
@@ -47,6 +55,14 @@ exports.login = function (req, res) {
         var token = jwt.sign({ id: user._id }, config.TOKEN_SECRET, {
             expiresIn: 86400 // expires in 24 hours
         });
-        res.status(200).send({ auth: true, token: token });
+        res.status(200).send({
+            auth: true, 
+            token: token,
+            currentUser: {
+                id: user._id,
+                userName: user.username,
+                email: user.email,
+            }
+        });
     });
 };
