@@ -8,10 +8,17 @@ exports.list = function (req, res) {
         .select('-password -__v')
         .exec(function (err, interests) {
             if (err || interests === null) {
-                res.status(404).json({ error: 'interests not found' });
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'interests not found',
+                    error: err 
+                });
             }
             else {
-                res.json(interests);
+                res.status(200).json({
+                    IsOk: true,
+                    Results: interests
+                });
             }
         });
 };

@@ -1,4 +1,4 @@
-// 1. Load the Person model
+// 1. Load the events model
 var Events = require('../models/events.js');
 
 
@@ -8,10 +8,17 @@ exports.list = function (req, res) {
         .select('-password -__v')
         .exec(function (err, events) {
             if (err || events === null) {
-                res.status(404).json({ error: 'events not found' });
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'events not found',
+                    error: err
+                });
             }
             else {
-                res.json(events);
+                res.status(200).json({
+                    IsOk: true,
+                    Results: events,
+                });
             }
         });
 };

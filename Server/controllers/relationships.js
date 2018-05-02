@@ -9,10 +9,17 @@ exports.list = function (req, res) {
         .select('-password -__v')
         .exec(function (err, relationships) {
             if (err || relationships === null) {
-                res.status(404).json({ error: 'relationships not found' });
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'relationships not found',
+                    error: err
+                });
             }
             else {
-                res.json(relationships);
+                res.status(200).json({
+                    IsOk: true,
+                    Results: relationships
+                });
             }
         });
 };

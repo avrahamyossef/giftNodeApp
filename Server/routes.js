@@ -20,7 +20,6 @@ module.exports = function (app) {
     app.get('/relationship', Relationship.list);
     app.get('/interests', Interests.list);
 
-
     //.6 Application Routes - with Authenticat
     //  app.post('/auth/login', ensureAuthenticated, Auth.login);
 

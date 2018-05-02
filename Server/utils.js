@@ -15,11 +15,19 @@ exports.ensureAuthenticated = function (req, res, next) {
         payload = jwt.decode(token, config.TOKEN_SECRET);
     }
     catch (err) {
-        return res.status(401).send({ error: "TokenInvalid" });
+        return res.status(401).send({
+            IsOk: false,
+            errorMessage: "TokenInvalid",
+            error: err
+        });
     }
 
     if (payload.exp <= moment().unix()) {
-        return res.status(401).send({ error: 'TokenExpired' });
+        return res.status(401).send({
+            IsOk: false,
+            errorMessage: 'TokenExpired',
+            error: err
+        });
     }
 
     // if everything is good, save to request for use in other routes
