@@ -19,7 +19,7 @@ export class ApiUserService {
     const params = {
       UserInfo: userInfo,
     };
-    return this.api.post('user/register', params);
+    return this.api.post('auth/signup', params);
   }
 
   /**
@@ -30,10 +30,10 @@ export class ApiUserService {
    */
   signIn(userName: string, password: string) {
     const params = {
-      userName: userName,
+      email: userName,
       password: password
     };
-    const actionName = 'login';
+    const actionName = 'auth/login';
 
     return this.api.post(actionName, params, false, false);
   }
@@ -42,5 +42,4 @@ export class ApiUserService {
     const actionName = 'LogOut';
     return this.api.get(actionName, {}, true, false);
   }
-
 }

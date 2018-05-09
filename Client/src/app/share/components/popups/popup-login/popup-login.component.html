@@ -1,0 +1,51 @@
+<div class="login-main-wrapper" *ngIf="!forgotPasswordView">
+    <img class="popup-background-image" rc-image src="/assets/images/icon.png"/>
+    <div class="login">
+      <h1>{{'login.mainTitle' | rcTranslate}}</h1>
+      <form class="login-form" autocomplete="false">
+        <app-form-group-input
+          [control]="idEmailControl"
+          idValue="idNumber"
+          [required]="true"
+          type="text"
+          placeholder="login.id_mail_placeholder"
+          requiredError="login.id_mail_placeholder_req"
+          (inputChangeCallback)="inputChanged()">
+        </app-form-group-input>
+        <app-form-group-input
+          [control]="passwordControl"
+          idValue="password"
+          [required]="true"
+          type="password"
+          (keypress)="keypress($event)"
+          placeholder="login.password_placeholder"
+          requiredError="login.password_placeholder_req"
+          (inputChangeCallback)="inputChanged()">
+        </app-form-group-input>
+  
+        <div class="invalid-error" [ngClass]="{'invisible' : !showInvalidError}">
+          <p>{{'login.invalidLengthError' | rcTranslate}}</p>
+        </div>
+  
+        <div class="actions d-flex text-center">
+          <button class="btn" (click)="signIn()">{{'login.buttonText' | rcTranslate}}</button>
+        </div>
+      </form>
+  
+      <div class="footer-actions d-flex justify-content-between">
+        <div class="forgot-password">
+          <a (click)="forgotPasswordClicked()">{{'login.footerActions.forgotPassword' | rcTranslate}}</a>
+        </div>
+        <div>
+          <span>{{'login.footerActions.action_1.text' | rcTranslate}}</span>
+          <button class="gray-btn" (click)="navigateToRegistration()">
+            {{'login.footerActions.action_1.btnText' | rcTranslate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- <app-popup-forgot-password *ngIf="forgotPasswordView" [modalRef]="modalRef" (successCallback)="backToLogin()"></app-popup-forgot-password> -->
+  

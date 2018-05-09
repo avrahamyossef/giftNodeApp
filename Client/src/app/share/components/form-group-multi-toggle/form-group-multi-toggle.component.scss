@@ -1,0 +1,52 @@
+@import "../../../assets/sass/variables";
+
+.multi-toggle {
+    width: 100%;
+
+  .toggle-wrapper {
+    width: 100%;
+    label {
+      width: 47%;
+      margin-left: 5px;
+    }
+  }
+
+  input {
+    transform: scale(0);
+    -ms-transform: scale(0); /* IE */
+    -moz-transform: scale(0); /* FF */
+    -webkit-transform: scale(0); /* Safari and Chrome */
+    -o-transform: scale(0); /* Opera */
+    &:focus{
+      + div {
+        font-weight: bold;
+        border: 1.1px solid #e65050;
+      }
+    }
+  }
+  .type {
+    width: 100%;
+    border-radius: 60px;
+    background-color: #FFFFFF;
+    border: 1.1px solid #B2B8BA;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+  }
+  .type.last {
+   // border-radius: 88px 0 0 88px;
+  }
+  .type.selected {
+    font-weight: bold;
+    border: 1.1px solid #e65050;
+    color: #e65050;
+  }
+
+  .invalid-feedback-message {
+    font-size: 12px;
+    color: $color_text_invalid_feedback;
+    font-weight: 400;
+    margin-top: 0;
+  }
+
+}

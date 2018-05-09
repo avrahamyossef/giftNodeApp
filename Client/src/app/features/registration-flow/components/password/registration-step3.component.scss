@@ -1,0 +1,98 @@
+.step3 {
+  .password {
+    margin-top: 85px;
+    .approve-conditions-section {
+      margin-top: 40px;
+      /deep/
+      app-rc-form-group-switcher {
+        label {
+          font-size: 15px;
+          //margin-right: 14px;
+        }
+      }
+      .toggles {
+        margin-bottom: 8px;
+        &.policy {
+          label {
+            font-size: 15px;
+            margin-right: 14px;
+          }
+        }
+      }
+    }
+  }
+  .success {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    h1 {
+      color: #004FA1;
+      font-size: 36px;
+    }
+    .action-buttons {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 180px;
+      .container{
+        padding-top: 275px;
+        padding-right: 18px;
+        background-image: url(/assets/images/search_results-banner.png);
+        background-repeat: no-repeat;
+        background-position: 0px top;
+      }
+      h3{
+        font-size: 36px;
+        color: #004fa1;
+        font-weight: 400;
+        margin-bottom: 25px;
+      }
+      .search_results-gotocatalogue-wrapper{
+        display: inline-block;
+      }
+      .search_results-gotocatalogue{
+        cursor: pointer;
+        height: 123px;
+        width: 158px;
+        border: 1.44px solid #004FA1;
+        border-radius: 8px;
+        background-color: #FFFFFF;
+        box-shadow: 0 5px 9px 0 rgba(0,0,0,0.06);
+        display: inline-block;
+        margin-left: 7px;
+
+        .search_results-gotocatalogue-text {
+          color: #004FA1;
+          font-family: "Open Sans Hebrew";
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 16px;
+          text-align: center;
+
+        }
+        .search_results-gotocatalogue-img {
+          height: 90px;
+          background-repeat: no-repeat;
+          background-size: 91px;
+          position: relative;
+          top: 8px;
+          &.editor {
+            background-image: url(/assets/images/wishlist_icon.svg);
+            background-position: right 30px center;
+          }
+          &.quickBuy {
+            background-image: url(/assets/images/wizard_icon.svg);
+            background-position: right 33px center;
+          }
+          &.catalog {
+            background-image: url(/assets/images/catalog_shadow.svg);
+            background-position: right 25px center;
+            background-size: 106px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+

@@ -1,4 +1,4 @@
 export interface InterestsModel {
-    Id: number,
-    Name: string
+    interests_id: number,
+    interests_name: string
 }

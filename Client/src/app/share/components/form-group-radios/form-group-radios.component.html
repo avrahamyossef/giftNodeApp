@@ -1,0 +1,9 @@
+<div class="form-group form-radios" role="radiogroup">
+  <div class="form-radio" *ngFor="let option of options; let i = index" role="radio" attr.aria-checked="{{control.value === option.value}}">
+    <input class="radio-input" [id]="option.key" type="radio" [name]="idValue" [value]="option.key" [formControl]="control" (change)="onClick(option)"
+      tabindex="{{i === 0 ? 0 : -1}}">
+    <label *ngIf="!renderExternalComponent" [for]="option.key" [tabindex]="-1">{{option.value}}</label>
+    <label *ngIf="renderExternalComponent" [for]="option.key" [tabindex]="-1" [innerHTML]="option.value"></label>
+  </div>
+</div>
+<div class="invalid-feedback-message" *ngIf="control.hasError('required') && control.dirty">{{ requiredError}}</div>

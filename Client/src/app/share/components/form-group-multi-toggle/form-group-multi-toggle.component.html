@@ -1,0 +1,11 @@
+<div class="form-group multi-toggle" [ngClass]="{'dual-toggle': isDual()}">
+  <div class="toggle-wrapper">
+    <label [for]="option.key" *ngFor="let option of options; let i = index">
+      <input [id]="option.key" type="checkbox" [value]="option.value" [name]="control" [formControl]="control" (change)="onOptionsChange(option)">
+      <div class="type" [ngClass]="{selected: (!isNullOrUndefined(control.value) && option.selected), last: i == options.length-1 }">
+        {{ option.text }}
+      </div>
+    </label>
+  </div>
+  <div class="invalid-feedback-message" *ngIf="requiredError && control.dirty && control.hasError('required')">{{ requiredError   }}</div>
+</div>

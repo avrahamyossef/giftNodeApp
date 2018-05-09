@@ -1,0 +1,634 @@
+{
+  "common": {
+    "test": "בדיקה",
+    "noResults": "לא נמצאו תוצאות",
+    "shekel": "₪"
+  },
+  "footer": {
+    "contactUs": "צור קשר",
+    "youtube": "יוטיוב",
+    "facebook": "פייסבוק",
+    "instagram": "אינסטגרם"
+  },
+  "homePage": {
+    "mainTitle": "מבצעים",
+    "anonymousUser": {
+      "mainTitle_1": "חצי חינם מזמינה אותך",
+      "mainTitle_2": "לחווית קניות פשוטה ומהירה",
+      "buttonText": "התחל קניה"
+    },
+    "returningUser": {
+      "mainTitle_1": "שמחים שחזרת!",
+      "mainTitle_2": "המוצרים שלך ממתינים בעגלה",
+      "buttonText": "המשך קניה"
+    },
+    "loggedInUser": {
+      "mainTitle_1": "שלום {0},",
+      "mainTitle_2": "כיצד תרצה להתחיל את הקניה שלך?",
+      "buttonText": "המשך קניה",
+      "actions": {
+        "action_1": {
+          "actionText": "הזמנה אחרונה",
+          "subActionText": "העתקת רשימת קניות לעגלה"
+        },
+        "action_2": {
+          "actionText": "הרשימות שלי",
+          "link_1": "המועדפים שלי",
+          "link_2": "לכל הרשימות"
+        },
+        "action_3": {
+          "actionText": "קניה חדשה",
+          "link_1": "כל המוצרים",
+          "link_2": "העתקת רשימה",
+          "link_3": "קניה מהירה"
+        }
+      }
+    }
+  },
+  "enteringPopup": {
+    "citySelection": {
+      "mainTitle": "שלום, בואו נכיר",
+      "description_1": "על מנת שנוכל לוודא כי אנו מספקים משלוחים למקום מגוריך,",
+      "description_2": "אנא עדכן אותנו מהי עיר מגוריך",
+      "cityPlaceholder": "בחרו עיר למשלוח",
+      "cityRequiredError": "יש לבחור עיר",
+      "otherCity": "אחר",
+      "footerActions": {
+        "action_1": {
+          "text": "רשומים כבר?",
+          "btnText": "התחברו"
+        },
+        "action_2": {
+          "text": "אין לכם עדיין חשבון?",
+          "btnText": "הירשמו"
+        }
+      },
+      "submitBtn": "אישור"
+    },
+    "distributionCity": {
+      "mainTitle": "מעולה!",
+      "subTitle": "אנחנו מגיעים ל{0}",
+      "btnText_1": "התחברות",
+      "btnText_2": "הרשמה",
+      "guestTitle": "כניסה בתור אורח",
+      "approvePolicy_1": "אני מאשר/ת את ",
+      "approvePolicy_link": "תנאי השימוש",
+      "approvePolicy_2": " באתר",
+      "guestBtn": "בואו נתחיל!"
+    },
+    "otherCity": {
+      "titleDesc": "בשלב זה כתובתך לא נמצאת באיזור החלוקה שלנו",
+      "mainTitle": "אבל אל דאגה, נכין את הזמנתך וניתן לאסוף אותה בסניפים:"
+    }
+  },
+  "productCard": {
+    "productCode": "קוד מוצר",
+    "productsInDiscount": "לבחירת מוצרים במבצע",
+    "commentTitle": "הוספת הערה",
+    "addToList": "הוסף לרשימה",
+    "freetextCommentPlaceholder": "כתוב/כתבי",
+    "saveRemark": "שמירה",
+    "deleteRemark": "מחיקת הערה",
+    "cancelRemark": "ביטול",
+    "shoppingList_empty": "אין רשימות להצגה"
+  },
+  "header": {
+    "search": {
+      "placeholder": "חיפוש מוצר",
+      "allResultsLink": "לכל תוצאות החיפוש",
+      "noResults": "לא נמצאו תוצאות"
+    },
+    "lists": "רשימות",
+    "listsBubbles": {
+      "notLoggedIn": {
+        "title": "אין לך רשימות שמורות עדיין...",
+        "text": "באפשרותך לשמור רשימת מועדפים ורשימות שמורות",
+        "button": "התחברות"
+      },
+      "loggedIn": {
+        "title": "אין לך רשימות שמורות",
+        "text": "כדי לקצר את תהליך הקניה הבא שלך תוכל לשמור בסיום הרכישה את רשימת הקניות שלך ולהשתמש בה כבסיס לרשימת הקניות הבאה שלך",
+        "button1": "להזמנות קודמות",
+        "button2": "הבנתי, תודה",
+        "myFavorites": "המועדפים שלי",
+        "myLists": "הרשימות שלי",
+        "previousOrders": "הזמנות אחרונות"
+      }
+    },
+    "deliveryDates": "מועדי משלוח",
+    "deliveryBubbles": {
+      "notLoggedIn": {
+        "tab1": "מועד המשלוח הבא",
+        "tab2": "מועדי איסוף עצמי",
+        "text": "להצגת זמני המשלוח הבאים יש לבצע הזדהות",
+        "buttonLogIn": "כניסה",
+        "buttonRegister": "הרשמה"
+      },
+      "loggedIn": {
+        "tab1": "מועדי משלוח",
+        "tab2": "מועדי איסוף עצמי",
+        "withoutAddress": {
+          "text": "להצגת זמני המשלוח הבאים יש לעדכן כתובת למשלוח באזור האישי",
+          "buttonChangeAddress": "עדכון כתובת",
+          "note": "מועד המשלוח יבחר בתהליך הרכישה בהתאם למועדים הזמינים"
+        },
+        "withAddress": {
+          "buttonChangeAddress": "לעדכון כתובת",
+          "note": "מועד המשלוח יבחר בתהליך הרכישה בהתאם למועדים הזמינים"
+        }
+      },
+      "pickUp": {
+        "title": "זמני האיסוף הבאים הזמינים נכון לעכשיו",
+        "note": "מועדי האיסוף יבחר בתהליך הרכישה בהתאם למועדים הזמינים"
+      },
+      "nextDelivery": {
+        "title1": "מועד המשלוח הבא הזמין נכון לעכשיו",
+        "title2": "מועדי איסוף עצמי",
+        "buttonChangeAddress": "לעדכון כתובת"
+      }
+    },
+    "logIn": "התחברות",
+    "myAccount": "החשבון שלי",
+    "logInBubbles": {
+      "personalDetails": "הגדרות אישיות",
+      "logOff": "התנתקות"
+    },
+    "quickBuy": "קניה מהירה",
+    "quickBuyBubble": {
+      "copyExistingList": "העתקת רשימה קיימת",
+      "quickBuy": "קניה מהירה"
+    },
+    "myCart": "הסל שלי",
+    "myCartBubbles": {
+      "emptyCart": {
+        "noItems": "אין מוצרים בעגלה",
+        "text1": "יש לנו כלים שיעזרו לך",
+        "text2": "לבנות את סל הקניות במהירות ובקלות",
+        "copyExistingList": "העתקת רשימה קיימת",
+        "quickBuy": "אשף הקניה המהירה"
+      },
+      "cart": {
+        "shippingPrice": "דמי טיפול",
+        "savings": "החיסכון שלך",
+        "toCheckout": "לקופה",
+        "tab1": "לפי סדר הוספת פריטים",
+        "tab2": "לפי קטגוריות"
+      },
+      "addedItemPopUp": {
+        "added": "המוצר התווסף בהצלחה לסל",
+        "deleted": "המוצר הוסר בהצלחה"
+      }
+    },
+    "addToListBubble": {
+      "added": "המוצר התווסף בהצלחה ל{0}",
+      "notAdded": "המוצר לא התווסף לרשימה"
+    }
+  },
+  "quickBuy": {
+    "tags": {
+      "title": "קניה מהירה",
+      "explanation": "ריכזנו עבורכם מס' מוצרים נפוצים, התחילו את הקניות בקלות ומהירות באמצעות סימון המוצרים: ",
+      "toListEditorMode": "העתקת רשימה ממקור אחר",
+      "myList": "רשימה לחצי חינם",
+      "showSelectedProducts": "הצג את המוצרים שבחרתי"
+    },
+    "results": {
+      "titleQuickBuy": "קניה מהירה",
+      "titleListEditor": "העתקת רשימת קניות",
+      "explanation": "יש לבחור את המוצרים שברצונך להוסיף לסל",
+      "checkboxOptions": {
+        "cancel": "ביטול",
+        "search": "חיפוש"
+      },
+      "toAllResults": "לכל מוצרי ה{0}",
+      "showMore": "הצג עוד",
+      "closeMoreResults": "סגירה",
+      "noSearchResult": "לא נמצאו מוצרים תואמים לחיפוש",
+      "noResults": "לא נמצאו מוצרים תואמים לחיפוש",
+      "backToListEditor": "חזרה להעתקת רשימה",
+      "goToQuickBuy": "קניה מהירה",
+      "goToFullCatalog": "לקטלוג המלא"
+    },
+    "listEditor": {
+      "title": "העתקת רשימת קניות",
+      "subTitle": "יש לך רשימה מוכנה שהכנת במייל / בוואטסאפ?",
+      "explanationLine1": "מצויין! כל שנותר לך לעשת הוא להעתיק ולהדביק אותה בקלות לאשף רשימת הקניות.",
+      "explanationLine2": "יש להפריד בין הפריטים ברשימה באמצעות פסיק",
+      "quickBuyButton": "קניה מהירה",
+      "showSelectedProducts": "הצג את המוצרים שבחרתי"
+    }
+  },
+  "searchResults": {
+    "mainTitle": "תוצאות חיפוש",
+    "tableTitles": {
+      "col_1": "פרטי מוצר",
+      "col_2": "מבצע",
+      "col_3": "מחיר",
+      "col_4": "כמות"
+    }
+  },
+  "tagmulPopup": {
+    "instructionsTitle": "יש לבחור {0} מוצרים",
+    "closeBtn": "סיום"
+  },
+  "productCartButton": {
+    "toCart": "לעגלה"
+  },
+  "catalog": {
+    "noItemsFound": "לא נמצאו פריטים להצגה",
+    "backToTop": "חזרה למעלה",
+    "viewMode_catalog": {
+      "mainTitle": "יש לך רשימת קניות?"
+    },
+    "viewMode_campaign": {
+      "mainTitle": "יש לך רשימת קניות?"
+    },
+    "viewMode_actions": {
+      "mainTitle": "יש לך רשימת קניות?",
+      "button_1": "יש לי",
+      "button_1_text": "העבירו אותי למסך העתקת רשימה",
+      "button_2": "אין לי",
+      "button_2_text": "העבירו אותי לקניה מהירה"
+    },
+    "filters": {
+      "buttonText_1": "הצגת פריטים במבצע",
+      "buttonText_2": "יצרן",
+      "buttonText_3": "מיון לפי",
+      "clear": "נקה",
+      "sort": {
+        "noSort": "ללא מיון",
+        "ascending": "מחיר מהנמוך לגבוה",
+        "descending": "מחיר מהגבוה לנמוך"
+      }
+    }
+  },
+  "account": {
+    "mainTitle": "האיזור האישי",
+    "verticalTabs": {
+      "personalDetails": "פרטים אישיים",
+      "addresses": "ניהול כתובות למשלוח",
+      "password": "החלפת סיסמה"
+    },
+    "personalDetails": {
+      "mainTitle": "פרטים אישיים",
+      "fNameMain": "שם פרטי",
+      "fNameErrorRequired": "יש להזין שם פרטי",
+      "fNameErrorInValid": "הזנה שגויה",
+      "lNameMain": "שם משפחה",
+      "lNameErrorRequired": "יש להזין שם משפחה",
+      "lNameErrorInValid": "הזנה שגויה",
+      "idNumber": "ת.ז.",
+      "mobileMain": "מספר טלפון",
+      "extraPhoneMain": "טלפון נוסף",
+      "emailMain": "דוא\"ל",
+      "emailUpdateMsg": "* לעדכון דוא״ל יש לפנות לשירות לקוחות 9097",
+      "extraPrfsPhoneDefaultSelect": "בחירה",
+      "phoneErrorInValid": "יש להזין 7 ספרות",
+      "phoneErrorRequired": "יש להזין טלפון",
+      "extraPhoneErrorRequired": "יש להזין מספר טלפון נוסף",
+      "prfsPhoneErrorRequired": "יש לבחור קידומת",
+      "extraPrfsPhoneErrorRequired": "יש לבחור קידומת טלפון נוסף",
+      "prfsPhoneErrorLoading": "זמנית לא ניתן להציג את הנתונים",
+      "saveButtonText": "שמירה"
+    },
+    "addresses": {
+      "loadingErrorMessage": "התרחשה שגיאה בטעינת כתובות",
+      "mainTitle": "ניהול כתובות למשלוח",
+      "mainTitle_noAddresses": "פרטי כתובת למשלוח",
+      "deleteMessage": "הכתובת נמחקה בהצלחה",
+      "tabs": {
+        "setDefault": "ברירת מחדל",
+        "deleteAddress": "מחק כתובת",
+        "newAddress": "כתובת חדשה"
+      },
+      "form": {
+        "city": "עיר",
+        "neighborhood": "שכונה",
+        "street": "רחוב",
+        "number": "מספר",
+        "zip": "מיקוד",
+        "zipLink": "לאיתור מיקוד באתר דואר ישראל >",
+        "structure": "אני גר/ה ב",
+        "elevator": "יש מעלית בבניין?",
+        "floor": "קומה",
+        "apartment": "דירה",
+        "entrance": "כניסה",
+        "notes": "הערות",
+        "saveButtonText": "שמירה",
+        "privateHome": "בית פרטי",
+        "condo": "בניין מגורים",
+        "elevator_no": "אין מעלית",
+        "elevator_yes": "יש מעלית",
+        "errors": {
+          "cityErrorRequired": "יש לבחור עיר",
+          "cityErrorInValid": "יש לבחור עיר מהרשימה",
+          "streetErrorRequired": "יש לבחור רחוב",
+          "streetErrorInValid": "יש לבחור רחוב מהרשימה",
+          "neighborhoodErrorPattern": "ערך לא תקין",
+          "numberErrorRequired": "יש להזין מספר בית",
+          "zipErrorRequired": "יש להזין מיקוד",
+          "zipInvalidLengthError": "יש להזין 7 ספרות",
+          "structureErrorRequired": "יש לבחור סוג מבנה",
+          "elevatorErrorRequired": "יש לבחור ערך בשדה יש מעלית בבניין",
+          "floorErrorRequired": "יש להזין קומה",
+          "apartmentErrorRequired": "יש להזין מספר דירה",
+          "apartmentErrorPattern": "ערך לא תקין",
+          "notesErrorPattern": "ערך לא תקין"
+        }
+      },
+      "popup": {
+        "title": "האם למחוק את כתובת ברירת המחדל?",
+        "button_yes": "כן",
+        "button_no": "לא"
+      }
+    },
+    "password": {
+      "mainTitle": "החלפת סיסמה",
+      "currentPassword": "סיסמה נוכחית",
+      "newPassword": "סיסמה חדשה",
+      "newPasswordRepeat": "הזנה חוזרת",
+      "currentPasswordErrorRequired": "יש להזין סיסמה נוכחית",
+      "newPasswordErrorRequired": "יש להזין סיסמה חדשה",
+      "newPasswordErrorInValid": "יש להזין סיסמה בין 6 ל-10 תווים מסוג אותיות וספרות בלבד",
+      "newPasswordRepeatErrorRequired": "יש להזין בשנית סיסמה חדשה",
+      "newPasswordRepeatErrorInValid": "הסיסמה אינה תואמת לסיסמה החדשה שהוזנה",
+      "saveButtonText": "שמירה",
+      "updatePasswordSuccessMessage": "הסיסמה הוחלפה בהצלחה",
+      "updatePasswordFailedMessage_1": "אירעה שגיאה"
+    }
+  },
+  "contactUs": {
+    "mainTitle": "יצירת קשר",
+    "subTitle": "איך נוכל לעזור?",
+    "staticPhoneTitle": "טלפון",
+    "staticFaxTitle": "פקס",
+    "staticMailTitle": "לאתר",
+    "staticAddressTitle": "כתובת",
+    "subjectPlaceholder": "נושא הפניה",
+    "subjectErrorRequired": "יש לבחור נושא פניה",
+    "subjectErrorInValid": "יש לבחור נושא מהרשימה",
+    "fNamePlaceholder": "שם פרטי",
+    "fNameErrorRequired": "יש להזין שם פרטי",
+    "fNameErrorInValid": "הזנה שגויה",
+    "lNamePlaceholder": "שם משפחה",
+    "lNameErrorRequired": "יש להזין שם משפחה",
+    "lNameErrorInValid": "הזנה שגויה",
+    "mobilePlaceholder": "טלפון נייד",
+    "phoneErrorRequired": "יש להזין טלפון נייד",
+    "phoneErrorInValid": "יש להזין 7 ספרות",
+    "prfsPhoneErrorRequired": "יש לבחור קידומת",
+    "prfsPhoneErrorLoading": "זמנית לא ניתן להציג את הנתונים",
+    "emailPlaceholder": "דוא״ל",
+    "emailErrorRequired": "יש להזין דוא״ל",
+    "emailErrorInValid": "הזנה שגויה",
+    "descriptionPlaceholder": "תוכן ההודעה",
+    "descriptionErrorRequired": "יש להזין תוכן הודעה",
+    "descriptionErrorInValid": "הזנה שגויה",
+    "submitButtonText": "שליחה",
+    "submittedMessage": "הפנייה התקבלה בהצלחה",
+    "extraPrfsPhoneDefaultSelect": "בחירה",
+    "address": "המרכבה 31 חולון, מיקוד 5885119"
+  },
+  "login": {
+    "mainTitle": "התחברות",
+    "id_mail_placeholder": "אימייל/מספר ת\"ז",
+    "id_mail_placeholder_req": "יש להזין אימייל או מספר ת\"ז",
+    "password_placeholder": "סיסמה",
+    "password_placeholder_req": "יש להזין סיסמה",
+    "invalidLengthError": "אחד מנתוני ההזדהות אינם תקינים",
+    "buttonText": "התחברות",
+    "footerActions": {
+      "action_1": {
+        "text": "אין לכם עדיין חשבון?",
+        "btnText": "הירשמו"
+      },
+      "forgotPassword": "שכחתי סיסמה"
+    }
+  },
+  "forgotPassword": {
+    "mainTitle": "שכחתי סיסמה",
+    "username_input": {
+      "description_1": "יש להזין שם משתמש, לאחר מכן ישלח אליך קוד אימות לטלפון הנייד",
+      "description_2": "במידה ואינך זוכר את שם המשתמש, צור קשר עם המוקד השירות 9097*",
+      "placeholder": "שם משתמש",
+      "required": "יש להזין שם משתמש",
+      "buttonText": "אישור"
+    },
+    "otpCode_input": {
+      "description_1": "לצורך החלפת סיסמה, נשלח אליך קוד אימות זיהוי לטלפון. אנא הזן אותו",
+      "description_2": "במידה וזה לא הטלפון שלך, צור קשר עם המוקד השירות 9097*",
+      "placeholder": "יש להזין קוד אימות",
+      "required": "יש להזין קוד אימות",
+      "OTPAgain": "שלח לי שוב קוד אימות",
+      "buttonText": "אישור"
+    },
+    "newPassword_input": {
+      "placeholder_1": "יש להזין 6-10 תווים המורכבים מאותיות וספרות בלבד",
+      "placeholder_2": "סיסמה חוזרת",
+      "required_1": "יש להזין סיסמה",
+      "required_2": "יש להזין שנית את הסיסמה",
+      "notValidError": "יש להזין 6-10 תווים המורכבים מאותיות וספרות בלבד",
+      "notEqualError": "סיסמה שהוזנה בשנית אינה תקינה",
+      "buttonText": "אישור"
+    },
+    "success": {
+      "mainTitle": "הסיסמה הוחלפה בהצלחה",
+      "buttonText": "כניסה לחשבון"
+    }
+  },
+  "formPersonalDetails": {
+    "emailErrorRequired": "יש להזין דוא״ל"
+  },
+  "registration": {
+    "mainTitle": "יצירת חשבון",
+    "stepName_1": "פרטים אישיים",
+    "stepName_2": "כתובת",
+    "stepName_3": "בחירת סיסמא",
+    "step1": {
+      "personalDetails": {
+        "btnText": "המשך לאימות זיהוי"
+      },
+      "otpCode": {
+        "mainTitle": "זיהוי אימות",
+        "description": "בדקות הקרובות יישלח אליך קוד זיהוי באמצעות הודעת SMS. יש להזין את הקוד להמשך תהליך הזיהוי והרישום.",
+        "placeholder": "יש להזין קוד אימות",
+        "requiredError": "יש להזין קוד אימות",
+        "OTPAgain": "שלח לי שוב קוד אימות",
+        "buttonText": "אישור"
+      }
+    },
+    "address": {
+      "toggleText": "מעוניין באיסוף עצמי בלבד",
+      "selfPickup": {
+        "title": "בחר סניף לאיסוף",
+        "requiredError": "אנא בחר/י סניף לאיסוף עצמי",
+        "buttonText": "המשך לבחירת סיסמה"
+      }
+    },
+    "password": {
+      "placeholder_1": "סיסמה",
+      "description_1": "יש להזין 6-10 תווים המורכבים מאותיות וספרות בלבד",
+      "required_1": "יש להזין סיסמה",
+      "required_2": "יש להזין שנית את הסיסמה",
+      "placeholder_2": "סיסמה חוזרת",
+      "notEqualError": "סיסמה שהוזנה בשנית אינה תקינה",
+      "notValidError": "יש להזין 6-10 תווים המורכבים מאותיות וספרות בלבד",
+      "commercialApproval": "מעוניין לקבל חומר שיווקי מחצי חינם",
+      "approvePolicy_1": "אני מאשר/ת את ",
+      "approvePolicy_link": "תנאי השימוש",
+      "approvePolicy_2": " באתר",
+      "approvalPolicyRequiredError": "יש לאשר את תנאי השימוש באתר",
+      "buttonText": "יצירת חשבון",
+      "successPage": {
+        "cartView": {
+          "mainTitle": "ההרשמה הסתיימה בהצלחה!",
+          "subText": "אוטוטו סיימת את תהליך הרכישה והקניות אצלך בבית",
+          "buttonText": "המשך"
+        },
+        "regularView": {
+          "mainTitle": "ההרשמה הסתיימה בהצלחה!",
+          "subText": "{0}, שמחים שהצטרפת לחווית הקניות הקלה והנוחה שלנו",
+          "buttonText_1": "העתקת רשימה",
+          "buttonText_2": "קניה מהירה",
+          "buttonText_3": "כל המוצרים"
+        }
+      }
+    }
+  },
+  "shoppingList": {
+    "menu": {
+      "title": "הרשימות שלי",
+      "buttons": {
+        "favorites": "המועדפים שלי",
+        "noFavorites": "אין לך פריטים מועדפים",
+        "previousOrders": "הזמנות קודמות",
+        "noLists": "אין רשימות שמורות"
+      }
+    },
+    "favorites": {
+      "tableHeader": {
+        "itemType": "פרטי מוצר",
+        "sale": "מבצע",
+        "price": "מחיר",
+        "amout": "כמות"
+      },
+      "emptyPage": {
+        "title": "אין לך פריטים מועדפים",
+        "text": "כדי שבפעם הבאה תהליך הרכישה יהיה קצר יותר, באפשרותך לשמור פריטים מועדפים"
+      }
+    },
+    "personal": {
+      "addToCart": "הוסף הכל לעגלה",
+      "deleteList": "מחיקת רשימה",
+      "updateName": "עדכון",
+      "cancelUpdsteName": "ביטול",
+      "errorEmptyUpdateName": "יש להזין שם רשימה",
+      "tableHeader": {
+        "itemType": "פרטי מוצר",
+        "sale": "מבצע",
+        "price": "מחיר",
+        "amout": "כמות"
+      },
+      "emptyPage": {
+        "title": "אין לך רשימת קניות ",
+        "text": "כדי שבפעם הבאה תהליך הרכישה יהיה קצר יותר, באפשרותך לשמור בסיום כל הזמנה את רשימת הקניות שלך בשם ולהשתמש בה בקנייתך הבאה."
+      }
+    },
+    "lists": {
+      "title": "הזמנות קודמות",
+      "tableHeadings": {
+        "transactionDate": "תאריך אספקה",
+        "transactionNumber": "מספר עסקה",
+        "totalCost": "סה\"כ לתשלום",
+        "selfPickUp": "איסוף עצמי מהסניף",
+        "delivery": "משלוח"
+      },
+      "itemsHeadings": {
+        "itemType": "פרטי מוצר",
+        "sale": "מבצע",
+        "price": "מחיר",
+        "amout": "כמות"
+      },
+      "emptyPage": {
+        "title": "אין לך הזמנות קודמות",
+        "text": "באפשרותך לשמור בסיום כל הזמנה את רשימת הקניות שלך בשם ולהשתמש בה בקנייתך הבאה."
+      }
+    }
+  },
+  "popup": {
+    "addItemsToCart": {
+      "title": "האם ברצונך להוסיף את כל המוצרים לעגלה?",
+      "text": "לתשומת ליבך, כל פריט יתווסף בכמות 1 לעגלה",
+      "button1": "כן",
+      "button2": "לא"
+    },
+    "clearList": {
+      "title": "האם למחוק את הרשימה?",
+      "button1": "כן",
+      "button2": "לא",
+      "checkout": {
+        "title": "האם למחוק את כל הפריטים בעגלה?",
+        "button1": "כן, למחוק",
+        "button2": "ביטול"
+      }
+    },
+    "minOrder": {
+      "title": "מינימום הזמנה",
+      "text": "מינימום הזמנה כולל דמי טיפול הינו בסך {0} ₪",
+      "button": "אישור"
+    }
+  },
+  "productStrip": {
+    "cancel": "ביטול",
+    "deleteFromCart": "הסר מוצר מהסל",
+    "undo": "ביטול מחיקה"
+  },
+  "product": {
+    "outOfStock": "אזל המלאי"
+  },
+  "checkout": {
+    "menu": {
+      "cashier": "קופה",
+      "cart": "עגלה",
+      "defineOrder": "הגדרות הזמנה",
+      "payment": "תשלום",
+      "finishBuy": "סיום קניה",
+      "numbers": {
+        "one": "1",
+        "two": "2",
+        "three": "3",
+        "four": "4"
+      }
+    },
+    "footer": {
+      "savings": "החיסכון שלך",
+      "total": "סה\"כ לתשלום",
+      "fee": "דמי טיפול",
+      "pay": "תשלום"
+    },
+    "cart": {
+      "title": "העגלה שלך",
+      "suggestions": {
+        "title": "אולי תרצו להוסיף לעגלה"
+      },
+      "tabs": {
+        "order": "לפי סדר הוספת פריטים",
+        "categories": "לפי קטגוריות"
+      },
+      "deleteAllItemsFromCart": "מחיקת כל הפריטים בעגלה",
+      "itemsTitles": {
+        "specifications": "פרטי מוצר",
+        "sale": "מבצע",
+        "total": "סה\"כ",
+        "amount": "כמות"
+      },
+      "empty": {
+        "title": "אין מוצרים בעגלה",
+        "subTitle": "איך תרצה/י להמשיך?",
+        "copyExistingList": "העתקת רשימה קיימת",
+        "quickBuy":"קניה מהירה",
+        "catalog": "כל המוצרים"
+      }
+    }
+  }
+}

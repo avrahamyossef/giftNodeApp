@@ -1,0 +1,171 @@
+@import '../../../assets/sass/variables';
+
+.form-select {
+  select {
+    border: 1px solid #B2B8BA;
+    /* outline: 0; */
+    -webkit-appearance: none;
+    background: url(/assets/images/arr_bottom.png) left 7px top 7px no-repeat;
+    /* border-bottom: 2px solid #b8b8b8; */
+    font-size: 16px;
+    /* color: #d32f30; */
+    padding: 0;
+    background-size: 22px;
+    margin-bottom: 24px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    display: block;
+    width: 300px;
+    /* margin-right: 6px; */
+    padding-right: 15px;
+    margin-top: 19px;
+    background-color: #e8e8e814;
+    border-radius:14px;
+    cursor: pointer;
+  }
+  select.is-invalid {
+    //border-bottom: 2px solid $color_text_invalid_feedback;
+  }
+  select:focus {
+    //border-bottom: 2px solid $color_border_default;
+    border: 1px solid #B2B8BA;
+
+  }
+}
+
+/////////
+
+@import '../../../assets/sass/variables';
+
+$form-input-height: 35px;
+$form-input-height-width-description: 35px;
+
+.form-input {
+  height: $form-input-height;
+  .invalid-feedback {
+    font-size: 12px !important;
+  }
+  .title-placeholder {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    .form-control {
+      height: 32px;
+      //margin: 25px 0 0 0;
+      margin: 0px 0 0 0;
+      padding: 0;
+      //font-size: 21px;
+      font-size: 16px;
+      //line-height: 24px;
+      line-height: 0;
+      //color: $color_text_input;
+      color: #141414;
+      border: none;
+      border-bottom: 2px solid $color_border_default;
+      border-radius: 0;
+      //box-shadow: 0 0 0 $color_border_orange;
+      box-shadow: none;
+      transition: all 0.3s ease;
+      &:disabled {
+        color: $color_text_dark_gray;
+        //background-color: transparent;
+        background: #fff;
+        //border-bottom-color: $color_border_default_with_opacity;
+        border-bottom-color: $color_border_default
+        + label span {
+          //color: $color_text_default;
+          color: #6D6D6D;
+        }
+        &.disabledBg {
+          background: #fff url(/assets/images/lock.svg) left top 5px no-repeat;
+        }
+      }
+    }
+    .form-control.is-invalid {
+      //border-bottom: 2px solid $color_text_invalid_feedback;
+      border-bottom: 2px solid $color_text_invalid_feedback;
+    }
+    .form-control:focus {
+      //margin: 25px 0 0 0;
+      padding: 0;
+      //font-size: $text_large + 2;
+      font-size: 16px;
+      //line-height: 24px;
+      line-height: 0;
+      color: $color_text_input;
+      border: none;
+      //border-bottom: 2px solid $color_border_orange;
+      border-bottom: 2px solid $color_border_default;
+      border-radius: 0;
+      //box-shadow: 0 1px 0 $color_border_orange;
+      box-shadow: none;
+      //&.no-description {
+      //  margin: 25px 0 0 0;
+      //}
+    }
+    label {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 1px;
+      div {
+        display: block;
+        position: absolute;
+        //top: 21px;
+        right: 0;
+        width: 100%;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        small {
+          display: block;
+          padding: 7px 1px 0 0;
+          font-size: 12px;
+          color: $color_text_dark_gray;
+          width: 100%;
+          opacity: 0;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+  .title-placeholder:before {
+    content: ".";
+    display: block;
+    font-size: 0;
+  }
+  .title-placeholder input:focus + label div {
+    //font-size: 24px;
+    font-size: 12px;
+    color: $color_text_cian;
+    top: -7px;
+    height: 12px;
+    line-height: 12px;
+    small {
+      opacity: 1;
+    }
+  }
+  .title-placeholder input:focus + label + .invalid-feedback,
+  .title-placeholder input:focus + a + a + .invalid-feedback {
+    display: none !important;
+  }
+  .title-placeholder input.ng-dirty.ng-valid:not(:focus) + label div,
+  .title-placeholder input.have-value:not(:focus) + label div {
+    //font-size: 14px;
+    font-size: 12px;
+    top: 12px;
+    height: 12px;
+    line-height: 12px;
+    //color: $color_text_default;
+    color: #6D6D6D;
+    //font-weight: 300;
+    font-weight: 400;
+  }
+  &.no-description {
+    height: $form-input-height-width-description;
+    //margin-top: 5px;
+    .title-placeholder input:focus + label div {
+      top: 6px;
+    }
+  }
+}

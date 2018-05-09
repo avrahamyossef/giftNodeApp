@@ -14,7 +14,7 @@ exports.signup = function (req, res) {
 
     User.create({
         username: req.body.username,
-        email: req.body.email,
+        email: req.body.email.toLowerCase(),
         password: hashedPassword
     },
         function (err, user) {
@@ -38,7 +38,7 @@ exports.signup = function (req, res) {
 };
 
 exports.login = function (req, res) {
-    User.findOne({ email: req.body.email }, function (err, user) {
+    User.findOne({ email: req.body.email.toLowerCase() }, function (err, user) {
 
         if (err) {
             return res.status(500).send({

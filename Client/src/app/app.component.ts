@@ -1,6 +1,7 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppService } from './core/services/app.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import * as models from './models/index';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 export class AppComponent {
   public modalRef: BsModalRef;
-  @ViewChild('entrancePopup') entrancePopup: ElementRef;
 
-  public appLoaded: boolean = false;
+  public eventsList: models.EventsModel[];
+  public interestsList: models.InterestsModel[];
+  public relationshipsList: models.RelationshipModel[];
+
+
+  @ViewChild('entrancePopup') entrancePopup: ElementRef;
 
   constructor(private appService: AppService, private modalService: BsModalService) {
   }
@@ -23,18 +28,9 @@ export class AppComponent {
 
 
   ngOnInit() {
-    this.appService.initApp();
-    this.appService._appLoaded.subscribe(loaded => {
-      if (loaded) {
-        this.appLoaded = true;
-        // if (this.userServices.isAnonymous() && !localStorage.getItem('policyApproved')) {
-        //   this.modalRef = this.modalService.show(this.entrancePopup);
-        // }
-      }
-    });
+    console.log('ngOnInit app.component..');
   }
 }
-
 if (typeof (<any>window).paymentAction === 'undefined') {
   (<any>window).paymentAction = (EventName) => {
     const event = new CustomEvent(EventName);

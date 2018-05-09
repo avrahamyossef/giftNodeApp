@@ -1,0 +1,11 @@
+<div class="registration-step1" [ngClass]="{'loading-area' : loadingResults}">
+  <app-step1-personal-details
+    *ngIf="currentViewMode === viewMode.personalDetails"
+    [viewMode]="viewMode"
+    [currentViewMode]="currentViewMode"
+    (changeCurrentView)="changeCurrentView($event)"
+    (setLoading)="setLoading($event)">
+  </app-step1-personal-details>
+
+
+</div>

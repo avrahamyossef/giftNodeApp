@@ -1,0 +1,91 @@
+.login-main-wrapper {
+    width: 930px;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align:right;
+
+    .popup-background-image {
+        width: 175px;
+        bottom: 6px;
+        left: 2px;
+        opacity: 0.3;
+        position: absolute;
+    }
+  
+    .login {
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      min-height: 430px;
+      color: #4A4A4A;
+      h1 {
+        font-size: 38px;
+        color: #4A4A4A;
+        text-align: center;
+      }
+      .login-form {
+        width: 80%;
+        .invalid-error {
+          color: #dc3545;
+          font-size: 12px;
+        }
+        .actions {
+          margin-top: 10px;
+          .btn {
+            height: 46px;
+            width: 155px;
+            border-radius: 90px;
+            background-color: #FFFFFF;
+            box-shadow: 0 9px 13px 0 rgba(0, 0, 0, 0.06);
+            font-size: 16px;
+            font-weight: bold;
+            border: 1.39px solid #DC0008;
+            color: #DC0008 !important;
+          }
+        }
+        ///deep/
+        //.rc-form-input {
+        //  margin: 0;
+        //  .title-placeholder {
+        //    label {
+        //      div {
+        //        top: 27px;
+        //        cursor: pointer;
+        //        span {
+        //          font-size: 16px;
+        //        }
+        //      }
+        //    }
+        //  }
+        //}
+      }
+      .footer-actions {
+        margin-top: 100px;
+        span, a {
+          color: #6D6D6D;
+          font-size: 15px;
+        }
+        .forgot-password {
+          a {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+        .gray-btn {
+          height: 30px;
+          width: 80px;
+          border: 0.91px solid #6E7379;
+          border-radius: 45px;
+          background-color: #FFFFFF;
+          box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.06);
+          color: #505070;
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 13px;
+        }
+      }
+    }
+  }
+  
+  

@@ -1,0 +1,127 @@
+.create_account {
+    width: 100%;
+    //background-image: url(/assets/images/create_account-2-bg.jpg);
+    //background-repeat: no-repeat;
+    //background-position: left 126px;
+    min-height: 688px;
+    .register-image {
+      position: absolute;
+      left: 0;
+      top: 200px;
+      &.success-img {
+        top: 400px;
+      }
+    }
+    .container {
+      padding-top: 120px;
+      &.create_account-wrapper {
+        position: relative;
+      }
+    }
+    .create_account-nav {
+      display: inline-block;
+      vertical-align: top;
+      width: 33.05%;
+      padding-right: 25px;
+      float:right;
+      h1 {
+        font-size: 38px;
+      }
+      .create_account-steps {
+        margin-right: 4px;
+        margin-top: 40px;
+        .create_account-step {
+          max-width: 250px;
+          margin-bottom: 45px;
+          cursor: pointer;
+          &.active {
+            .create_account-step-num {
+              color: #fff;
+              border: 1px solid #004fa1;
+              background: #004fa1;
+            }
+            .create_account-step-name {
+              font-weight: bold;
+              color: #004fa1;
+            }
+          }
+          &.done {
+            .create_account-step-num {
+              border-color: #004FA1;
+            }
+            .create_account-step-num::after {
+              background: #004FA1;
+            }
+          }
+          &:last-child .create_account-step-num::after {
+            display: none;
+          }
+          .create_account-step-num {
+            display: inline-block;
+            height: 36px;
+            width: 36px;
+            line-height: 34px;
+            border-radius: 20px;
+            border: 1px solid #6e7379;
+            color: #6e7379;
+            text-align: center;
+            font-weight: bold;
+            margin-left: 12px;
+            position: relative;
+            &::after {
+              position: absolute;
+              display: block;
+              content: "";
+              width: 2px;
+              height: 46px;
+              background: #bdc1c9;
+              top: 35px;
+              right: 16px;
+            }
+          }
+          .create_account-step-name {
+            width: 140px;
+            font-size: 18px;
+            line-height: 36px;
+            display: inline-block;
+            text-align: right;
+          }
+        }
+      }
+    }
+    .create_account-content {
+      display: inline-block;
+      width: 393px;
+      max-width: 100%;
+    }
+    /deep/
+    .actions {
+      margin-top: 40px;
+      .submit {
+        padding: 0 25px;
+        height: 46px;
+        min-width: 155px;
+        border: 1.4px solid #DC0008;
+        box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.06);
+        border-radius: 76px;
+        background-color: #FFFFFF;
+        font-size: 16px;
+        font-weight: 700;
+        color: #DC0008;
+      }
+    }
+    /deep/
+    .loading-area {
+      &:before {
+        background-color: white;
+        opacity: 0.8;
+        z-index: 3;
+      }
+    }
+    /deep/
+    .error {
+      color: #DC0008;
+      font-size: 14px;
+    }
+  }
+  

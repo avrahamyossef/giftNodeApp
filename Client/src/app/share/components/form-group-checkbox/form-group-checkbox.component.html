@@ -1,0 +1,11 @@
+<div class="form-group form-checkbox {{className}}">
+    <label class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [formControl]="control">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">
+        <ng-content></ng-content>
+      </span>
+    </label>
+    <!-- <div class="invalid-feedback-message" *ngIf="control.hasError('pattern') && control.touched && required">{{ errorMsgRequired | rcTranslate }}</div> -->
+  </div>
+  

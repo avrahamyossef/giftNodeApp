@@ -1,0 +1,107 @@
+@import '../../../assets/sass/variables';
+
+$form-input-height: 74px;
+$form-input-height-no-description: 50px;
+
+.form-input {
+  height: $form-input-height;
+  //margin-top: 20px;
+  .invalid-feedback {
+    font-size: 12px !important;
+    margin-top: 0px;
+  }
+  .title-placeholder {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+    .form-control {
+      height: 32px;
+      margin: 0px 0 0 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 0;
+      color: #141414;
+      border: none;
+      border-bottom: 2px solid $color_border_default;
+      border-radius: 0;
+      box-shadow: none;
+      transition: all 0.3s ease;
+      &:disabled {
+        color: $color_text_dark_gray;
+        background: #fff;
+        border-bottom-color: $color_border_default
+        + label span {
+          color: #6D6D6D;
+        }
+        &.disabledBg {
+          background: #fff url(/assets/images/lock.svg) left top 5px no-repeat;
+        }
+      }
+    }
+    .form-control.is-invalid {
+      border-bottom: 2px solid $color_text_invalid_feedback;
+    }
+    .form-control:focus + label div, .form-control.have-value + label div{
+      padding: 0;
+      margin-top: -16px;
+      border: none;
+
+      span {
+        font-size: 12px;
+      }
+    }
+    label {
+      position: absolute;
+      top: 3px;
+      right: 0;
+      width: 100%;
+      height: 1px;
+      div {
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        small {
+          display: block;
+          padding: 7px 1px 0 0;
+          font-size: 12px;
+          color: $color_text_dark_gray;
+          width: 100%;
+          //opacity: 0;
+          transition: all 0.3s ease;
+        }
+        span {
+          color: #6D6D6D;
+          font-size: 1rem;
+        }
+      }
+    }
+    .show-password {
+      position: absolute;
+      left: 5px;
+      top: 9px;
+      height: 17px;
+      width: 23px;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      background-image: url(/assets/images/password_eye.svg);
+    }
+  }
+  .title-placeholder:before {
+    content: ".";
+    display: block;
+    font-size: 0;
+  }
+  &.no-description {
+    height: $form-input-height-no-description;
+    .title-placeholder input:focus + label div {
+    }
+  }
+}

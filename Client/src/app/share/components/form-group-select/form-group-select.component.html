@@ -1,0 +1,13 @@
+<div class="form-group form-select">
+    <select
+      [id]='idValue'
+      [formControl]="control"
+      tabindex="0"
+      (blur)="onBlur($event)"
+      (focus)="onFocus()"
+      (change)="onChange()">
+    <option *ngFor="let option of options" [ngValue]="option.value">{{ option.value }}</option>
+  </select>
+  </div>
+  
+  

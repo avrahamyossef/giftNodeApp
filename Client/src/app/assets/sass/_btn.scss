@@ -1,0 +1,62 @@
+button{
+  cursor: pointer;
+}
+
+.btn-bannerred {
+  width: 262px;
+  height: 62px;
+  box-shadow: 0 7px 11px rgba(0, 0, 0, 0.06);
+  border-radius: 31px;
+  border: 3px solid #dc0008;
+  background-color: #dc0008;
+  line-height: 53px;
+  padding: 0px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.btn-submit {
+  font-size: 14.3px;
+  height: 32px;
+  color: #004fa1;
+  border-radius: 60px;
+  background-color: #fff;
+  border: 1px solid #004fa1;
+  font-weight: 700;
+  padding: 0px 18px;
+  min-width: 110px;
+}
+
+.btn-inline {
+  font-size: 12px;
+  text-decoration: underline;
+  padding: 0;
+  color: #6e7379;
+  background: none;
+  border: none;
+}
+
+.btn-green {
+  width: 142px;
+  height: 36px;
+  background-color: #468600;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0px;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 1279px) {
+  .btn-bannerred {
+    height: 55px;
+    width: 235px;
+    line-height: 55px;
+    font-size: 22px;
+    line-height: 46px;
+  }
+}

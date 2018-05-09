@@ -1,4 +1,4 @@
 export interface RelationshipModel {
-    Id: number,
-    Name: string
+    relationship_id: number,
+    relationship_name: string
 }

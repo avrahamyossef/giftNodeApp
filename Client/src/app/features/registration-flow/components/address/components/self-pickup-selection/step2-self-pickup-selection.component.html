@@ -1,0 +1,28 @@
+<div class="self-pickup-selection" [ngClass]="{'loading-area' : loadingResults}">
+  <h3>{{'registration.address.selfPickup.title' | rcTranslate}}</h3>
+
+  <!-- stores -->
+  <div class="create_account-branches">
+    <div class="create_account-branch" *ngFor="let store of stores" (click)="selectStore(store.Id)">
+      <input type = "radio" name="Branch" id="store_{{store.Id}}" [checked]="storeSelected === store.Id">
+      <label for="store_{{store.Id}}">{{store.Name}}</label>
+    </div>
+  </div>
+
+  <span class="error" *ngIf="isValid">{{'registration.address.selfPickup.requiredError' | rcTranslate}}</span>
+
+  <!-- notes -->
+  <app-form-group-input
+    [control]="notesControl"
+    [required]="false"
+    idValue="notesId"
+    type="text"
+    [maxlength]="35"
+    placeholder="account.addresses.form.notes"
+    invalidPatternError="account.addresses.form.errors.notesErrorPattern">
+  </app-form-group-input>
+
+  <div class="actions">
+    <button class="submit" (click)="submit()">{{'registration.address.selfPickup.buttonText' | rcTranslate}}</button>
+  </div>
+</div>

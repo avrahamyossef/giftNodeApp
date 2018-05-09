@@ -1,0 +1,60 @@
+/* screen sizes */
+$large_device_max_width: 1199px;
+$medium_device_max_width: 991px;
+$extra_small_device_max_with: 767px;
+$extra_small_device_max_with: 575px;
+
+/* font sizes */
+$font_size_default: 15px;
+$h1_title_size: 47px;
+$h1_subtitle_size: 24px;
+$h2_title: 29px;
+$h3_title: 24px;
+$h4_title: 20px;
+$text_large: 19px;
+
+/* colors */
+$color_white: #FFFFFF;
+$color_text_default: #757575;
+$color_text_dark_gray: #626262;
+$color_text_light_gray: #cacaca;
+$color_text_cian: #004e80;
+$color_text_blue: #266d9b;
+$color_text_red: #C1400B;
+$color_text_darker: #202320;
+$color_black: #000000;
+$color_text_input: #3C3D3C;
+
+$color_border_default: #b8b8b8;
+$color_border_default_with_opacity: rgba(184, 184, 184, 0.3);
+$color_border_orange: #F88000;
+$color_border_blue: #D2DCE5; /* For big circle */
+$color_border_blue_lighter: #E9F6FE; /* For small circle */
+
+$gradient_orange_top: linear-gradient(0deg, #F76100 14.28%, #FF6400 66.54%, #F88000 100%);
+$gradient_orange_bottom: linear-gradient(to bottom, #e95f00 0%, #f26713 57%, #f76b1c 76%, #f88000 100%);
+$gradient_cian_top: linear-gradient(180deg, #00385c 0%, #045a8d 49%, #1c77ae 100%);
+
+$color_dark_gray: #4d4e4d;
+$color_light_gray: #dfdfdf;
+$color_dark_blue: #073c6d;
+$color_background_light: #045a8d;
+$color_background_blue: #056696;
+$orange_shadow: 0 4px 8px 0 rgba(255, 100, 0, 0.44);
+
+$color_contact_us_footer: #1D6E9D;
+
+$color_form_number_plus_minus: #7C7C7C;
+$color_text_invalid_feedback: #C30016;
+
+$payment_bg: #ffefe6;
+$gray_color: #4d4e4d;
+$payment_total: #FF6400;
+$payment_callback: #626262;
+
+$discount_color: #d74206;
+$addition_inactive: #F7F7F7;
+
+$color_gray_border: #c9c9c9;
+$color_gray_background: #F7F8F8;
+$color_admin_footer: #004E80;

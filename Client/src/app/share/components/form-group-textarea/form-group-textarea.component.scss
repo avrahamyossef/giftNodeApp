@@ -1,0 +1,28 @@
+@import '../../../assets/sass/variables';
+
+.form-group-textarea{
+  margin-top: 22px;
+  .form-control {
+    border: 0.53px solid #979797;
+    width: 306.94px;
+    height: 107.86px;
+    border-radius: 0;
+  }
+  .form-control.is-invalid {
+    border: 2px solid $color_text_invalid_feedback;
+  }
+  .form-control:focus {
+    font-size: 16px;
+    color: $color_text_input;
+    border: 2px solid #979797;
+    box-shadow: none;
+  }
+  .invalid-feedback {
+    font-size: 12px;
+  }
+  .title-placeholder1 {
+    label {
+      display: none;
+    }
+  }
+}

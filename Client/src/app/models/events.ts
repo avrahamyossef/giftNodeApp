@@ -1,4 +1,4 @@
 export interface EventsModel {
-    Id: number,
-    Name: string
+    event_id: number,
+    event_name: string
 }

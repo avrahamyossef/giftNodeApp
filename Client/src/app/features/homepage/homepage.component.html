@@ -1,114 +1,30 @@
+<div *ngIf="appLoaded">
+  <!--header-->
+  <app-header></app-header>
+  <app-header-home-page></app-header-home-page>
+  <!--/header-->
 
-<!--header-->
-<app-header></app-header>
-<!--/header-->
 
-<!--Main Layout-->
-<main class="text-right">
-  <div class="container" style="height:1300px;">
-    <!--Section: Features v.3-->
-    <section class="section feature-box pt-5">
+  <!--Main Layout-->
+  <main class="main-content">
+    <div class="container text-right">
+      <!--Section: Features v.3-->
+      <section class="section feature-box pt-5">
 
-      <!--Section heading-->
-      <h5 class="section-heading pt-4"> איזה מתנה לחפש?</h5>
-      <!--Section description-->
-      <!-- <p class="section-description lead grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p> -->
-
-      <!--Grid row-->
-   
-      <!--Grid row-->
-
-    </section>
-    <!--Section: Features v.3-->
-
-    <!--Section: Team v.2-->
-    <section class="section team-section pb-3">
-
-      <div class="row text-center">
-
-        <!--Grid column-->
-        <div class="col-md-4 mb-r">
-
-          <div class="avatar">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="z-depth-1" alt="First sample avatar image">
-          </div>
-          <h4>Maria Kate</h4>
-          <h5>Photographer</h5>
-
-          <!--Facebook-->
-          <a type="button" class="btn-floating btn-small btn-fb waves-light" mdbRippleRadius>
-            <i class="fa fa-facebook"></i>
-          </a>
-          <!--Dribbble-->
-          <a type="button" class="btn-floating btn-small btn-dribbble waves-light" mdbRippleRadius>
-            <i class="fa fa-dribbble"></i>
-          </a>
-          <!--Twitter-->
-          <a type="button" class="btn-floating btn-small btn-tw waves-light" mdbRippleRadius>
-            <i class="fa fa-twitter"></i>
-          </a>
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-4 mb-r">
-
-          <div class="avatar">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" class="z-depth-1" alt="Second sample avatar image">
-          </div>
-          <h4>John Doe</h4>
-          <h5>Front-end Developer</h5>
-
-          <!--Email-->
-          <a type="button" class="btn-floating btn-small btn-email waves-light" mdbRippleRadius>
-            <i class="fa fa-envelope"></i>
-          </a>
-          <!--Facebook-->
-          <a type="button" class="btn-floating btn-small btn-fb waves-light" mdbRippleRadius>
-            <i class="fa fa-facebook"></i>
-          </a>
-          <!--GitHub-->
-          <a type="button" class="btn-floating btn-small btn-git waves-light" mdbRippleRadius>
-            <i class="fa fa-github"></i>
-          </a>
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-4 mb-r">
-
-          <div class="avatar">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="z-depth-1" alt="Third sample avatar image">
-          </div>
-          <h4>Sarah Melyah</h4>
-          <h5>Web Developer</h5>
-
-          <!--Linkedin-->
-          <a type="button" class="btn-floating btn-small btn-li waves-light" mdbRippleRadius>
-            <i class="fa fa-linkedin "></i>
-          </a>
-          <!--Twitter-->
-          <a type="button" class="btn-floating btn-small btn-tw waves-light" mdbRippleRadius>
-            <i class="fa fa-twitter "></i>
-          </a>
-          <!--Pinterest-->
-          <a type="button" class="btn-floating btn-small btn-pin waves-light" mdbRippleRadius>
-            <i class="fa fa-pinterest "></i>
-          </a>
-
-        </div>
-        <!--Grid column-->
-      </div>
+        <app-search-gifts-form
+         [eventsOptions]="eventsOptions" 
+         [interestsOptions]="interestsOptions"
+         [relationshipsOptions]="relationshipsOptions"
+         [ageOptions]="ageOptions">
+        </app-search-gifts-form>
 
     </section>
-    <!--Section: Team v.2-->
-  </div>
+    <!--Section: Features v.3-->
+</div>
 </main>
 <!-- /Main Layout-->
-
 
 <!--footer-->
 <app-footer></app-footer>
 <!--/footer-->
+</div>

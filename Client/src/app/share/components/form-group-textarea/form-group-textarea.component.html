@@ -1,0 +1,26 @@
+<div class="form-group form-group-textarea" [ngClass]="{'no-description': !description}">
+    <div class="title-placeholder1">
+      <label [for]="elementId"></label>
+      <textarea
+        id="{{elementId}}"
+        class="form-control"
+        maxlength="{{maxlength}}"
+        [ngClass]="{'is-invalid': control.invalid && control.dirty && control.touched, 'have-value': control.value && control.value.toString().length}"
+        [formControl]="control"
+        (blur)="onBlur($event)"
+        (focus)="onFocus()"
+        (change)="onChange()"
+        rows="{{rows}}">
+      </textarea>
+      <!-- <ng-container *ngIf="control.touched && control.dirty">
+        <div class="invalid-feedback" *ngIf="control.hasError('invalidCharacters')">{{ invalidCharactersError | rcTranslate }}
+        </div>
+        <div class="invalid-feedback" *ngIf="control.hasError('required')">{{ requiredError | rcTranslate }}</div>
+        <div class="invalid-feedback" *ngIf="control.hasError('pattern')">{{ invalidPatternError | rcTranslate }}</div>
+        <div class="invalid-feedback" *ngIf="control.hasError('specificLength')">{{ invalidSpecificLengthError | rcTranslate }}</div>
+        <div class="invalid-feedback" *ngIf="control.hasError('minlength') || control.hasError('maxlength')">{{ invalidLengthError | rcTranslate }}</div>
+        <div class="invalid-feedback" *ngIf="control.hasError('max')">{{ errorMax | rcTranslate : translateParams }}</div>
+      </ng-container> -->
+    </div>
+  </div>
+  
