@@ -99,6 +99,7 @@ export class PopupLoginComponent implements OnInit {
 
   forgotPasswordClicked() {
     this.forgotPasswordView = true;
+    this.modalRef.hide();
   }
 
   backToLogin() {

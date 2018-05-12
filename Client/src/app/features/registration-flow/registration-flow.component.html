@@ -9,7 +9,7 @@
    -->
       <div class="create_account-nav">
         <h1>{{'registration.mainTitle' | rcTranslate}}</h1>
-        <div class="create_account-steps">
+        <!-- <div class="create_account-steps">
           <div class="create_account-step" [ngClass]="{'done' : currentStep > steps.step1 }"
                (click)="stepClick(steps.step1)"
                routerLinkActive="active"
@@ -34,7 +34,7 @@
             <div class="create_account-step-num">{{steps.step3}}</div>
             <div class="create_account-step-name">{{'registration.stepName_3' | rcTranslate}}</div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="create_account-content">
         <router-outlet></router-outlet>
