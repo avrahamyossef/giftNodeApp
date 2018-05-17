@@ -10,6 +10,8 @@ export class EventBusService {
   public globalSubscriptions: any[] = [];
   public EVENTS_LIST = {
     INIT_APP: 'init app',
+    PRODUCT_LIST_CHANGE: 'products list change',
+    EVENT_FILTER_CHANGE: 'event filter change'
   };
 
   constructor() {

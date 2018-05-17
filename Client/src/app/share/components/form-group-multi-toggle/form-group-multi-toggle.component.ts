@@ -30,10 +30,29 @@ export class FormGroupMultiToggleComponent implements OnInit {
   }
 
   onOptionsChange(data) {
-    this.control.setValue(data.value);
+    var idsArray = [];
+
     this.options.forEach((item) => {
-      item.selected = item.key === data.key;
+      if (item.key === data.key) {
+        item.selected = !item.selected;
+      };
+
+      if (item.selected) {
+        //check if item Not already exist
+        if (idsArray.indexOf(item.key) === -1) {
+          idsArray.push(item.key)
+        }
+        else {
+          //if exist reomve
+          var index = idsArray.indexOf(item.key);
+          if (index > -1) {
+            idsArray.splice(index, 1);
+          }
+        }
+      }
     });
+
+    this.control.setValue(idsArray.toString());
     if (this.optionSelected.observers.length) {
       this.optionSelected.emit(data);
     }

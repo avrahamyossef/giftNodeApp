@@ -6,7 +6,7 @@
       (blur)="onBlur($event)"
       (focus)="onFocus()"
       (change)="onChange()">
-    <option *ngFor="let option of options" [ngValue]="option.value">{{ option.value }}</option>
+    <option *ngFor="let option of options" [ngValue]="option.key">{{ option.value }}</option>
   </select>
   </div>
   

@@ -2,7 +2,7 @@
   <div class="toggle-wrapper">
     <label [for]="option.key" *ngFor="let option of options; let i = index">
       <input [id]="option.key" type="checkbox" [value]="option.value" [name]="control" [formControl]="control" (change)="onOptionsChange(option)">
-      <div class="type" [ngClass]="{selected: (!isNullOrUndefined(control.value)), last: i == options.length-1 }">
+      <div class="type" [ngClass]="{selected: (option.selected)}">
         {{ option.text }}
       </div>
     </label>

@@ -9,12 +9,14 @@ import { RcTranslatePipe } from './rc-translate/rc-translate.pipe';
 import { RcTranslateService } from './rc-translate/rc-translate.service';
 import { RouterService } from './services/router.service';
 import { UserService } from './services/user.service';
+import { ProductService } from './services/product.service';
 
 /* API services */
 import { ApiUserService } from './services/api/api.user.service';
 import { ApiEventsService } from './services/api/api.events.service';
 import { ApiInterestsService } from './services/api/api.interests.service';
 import { ApiRelationshipService } from './services/api/api.relationships.service'
+import { ApiProductsService } from './services/api/api.products.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -34,7 +36,9 @@ import { ApiRelationshipService } from './services/api/api.relationships.service
     ApiRelationshipService,
     RcTranslateService,
     RouterService,
-    UserService
+    UserService,
+    ApiProductsService,
+    ProductService
   ],
   entryComponents: []
 })

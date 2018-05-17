@@ -1,6 +1,9 @@
+
 <!--Section heading-->
 <h5 class="section-heading pt-4" style="text-align: center;color: #d32f30;font-size: 28px;margin-bottom: 30px;"> איזה מתנה לחפש ?</h5>
 
+<div id="startLat"></div>
+<div id="startLon"></div>
 <div class="images-male-icon">
 
   <div class="text">בשבילו</div>
@@ -14,18 +17,16 @@
 <div class="col-lg-4 pull-right" style="clear: both;">
   <div class="pq">מה האירוע ?</div>
   <div class="d-flex">
-    <app-form-group-select [control]="eventControl" [idValue]="eventId" [options]="eventsOptions">
+    <app-form-group-select [control]="eventControl" [idValue]="eventId" (change)="filterChange()" [options]="eventsOptions">
     </app-form-group-select>
-    {{eventId}}
   </div>
 </div>
 
 <div class="col-lg-4 pull-right">
   <div class="pq">מה הקרבה ?</div>
   <div class="d-flex">
-    <app-form-group-select [control]="relationshipControl" [idValue]="eventId" [options]="relationshipsOptions">
+    <app-form-group-select [control]="relationshipControl" [idValue]="relationshipId" (change)="filterChange()" [options]="relationshipsOptions">
     </app-form-group-select>
-    {{eventId}}
   </div>
 </div>
 
@@ -33,9 +34,8 @@
 <div class="col-lg-4 pull-right">
   <div class="pq">מה הגיל ?</div>
   <div class="d-flex">
-    <app-form-group-select [control]="ageControl" [idValue]="eventId" [options]="ageOptions">
+    <app-form-group-select [control]="ageControl" [idValue]="ageId" (change)="filterChange()" [options]="ageOptions">
     </app-form-group-select>
-    {{eventId}}
   </div>
 </div>
 
@@ -55,10 +55,22 @@
   <div class="d-flex">
     <app-form-group-multi-toggle [control]="interestControl" [options]="interestsOptions">
     </app-form-group-multi-toggle>
-    {{eventId}}
   </div>
 </div>
 
 <div class="search-area">
   <button class="btn btn-danger" (click)="searchProcuts()">חיפוש</button>
+</div>
+
+<div *ngIf="isShowNudgeBanner" id="toast-container" class="toast-bottom-left">
+  <div class="toast toast-warning" aria-live="assertive" style="display: block;">
+    <button class="toast-close-button" role="button">
+      <i class="icon close"></i>
+    </button>
+    <div class="toast-message">מיקומך אינו מדוייק. יש לוודא ששירותי המיקום פעילים.
+      <div class="no-gps-notify-box">
+        <a class="get-user-location">הזן מיקום</a>
+      </div>
+    </div>
+  </div>
 </div>

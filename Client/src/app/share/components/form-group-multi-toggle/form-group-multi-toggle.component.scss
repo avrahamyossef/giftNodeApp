@@ -19,8 +19,8 @@
     -o-transform: scale(0); /* Opera */
     &:focus{
       + div {
-        font-weight: bold;
-        border: 1.1px solid #e65050;
+        //font-weight: bold;
+        //border: 1.1px solid #e65050;
       }
     }
   }
@@ -41,7 +41,6 @@
     border: 1.1px solid #e65050;
     color: #e65050;
   }
-
   .invalid-feedback-message {
     font-size: 12px;
     color: $color_text_invalid_feedback;

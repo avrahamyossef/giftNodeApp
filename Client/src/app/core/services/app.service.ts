@@ -24,6 +24,7 @@ export class AppService {
         this.eventBus.on(this.eventBus.EVENTS_LIST.INIT_APP, () => {
             this.initApp();
         });
+        
     }
 
     get showFullPageLoader() {

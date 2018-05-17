@@ -21,6 +21,7 @@ import { FormGroupMultiToggleComponent } from './components/form-group-multi-tog
 import { SearchGiftsFormComponent } from './components/search-gifts-form/search-gifts-form.component';
 import { PopupLoginComponent } from './components/popups/popup-login/popup-login.component';
 import { PopupWrapperComponent } from './components/popups/popup-wrapper/popup-wrapper/popup-wrapper.component';
+import { ProductsViewComponent } from './components/products-view/products-view.component';
 
 const sharedComponents = [
   FullPageLoaderComponent,
@@ -35,7 +36,8 @@ const sharedComponents = [
   FormGroupTextareaComponent,
   FormGroupMultiToggleComponent,
   PopupLoginComponent,
-  PopupWrapperComponent
+  PopupWrapperComponent,
+  ProductsViewComponent
 ];
 
 @NgModule({

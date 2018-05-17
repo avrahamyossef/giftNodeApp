@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import * as models from '../../models/user';
+import * as models from '../../models/index';
 import { isNull, isNullOrUndefined } from 'util';
 import { ApiUserService } from './api/api.user.service';
 import { EventBusService } from './event-bus.service';
@@ -13,6 +13,7 @@ import { switchMap } from 'rxjs/operators';
 export class UserService {
 
   public user: models.UserModel;
+  public Filters: models.FiltersModel;
 
   constructor(private cookieService: CookieService,
     private apiUser: ApiUserService,
@@ -27,6 +28,10 @@ export class UserService {
     if (this.user) {
       //this.user.CartItemsCount = 0;
     }
+  }
+
+  updateFilters(data) {
+    this.Filters = data;
   }
 
   setAccessToken(token) {

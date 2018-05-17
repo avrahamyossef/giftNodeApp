@@ -10,6 +10,7 @@ import { ShareModule } from './share/share.module';
 import { HomePageModule } from './features/homepage/homepage.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RegistrationModule } from './features/registration-flow/registration-flow.module';
+import { ProductViewListModule } from './features/products-view-list/products-view-list.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegistrationModule } from './features/registration-flow/registration-fl
     CoreModule,
     ShareModule,
     HomePageModule,
-    RegistrationModule
+    RegistrationModule,
+    ProductViewListModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [CookieService],

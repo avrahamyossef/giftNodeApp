@@ -1,0 +1,93 @@
+
+.product-view-page{
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        padding: 0;
+    }
+
+.product-view-content{
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+       padding: 0;
+    }
+}
+.product-row{
+    height: 265px;
+    width: 31%;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 15px;
+    background-color: #fbfbfb;
+    margin-left: 20px;
+
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        height: 125px;
+        width: 100%;
+        border-radius: 2px;
+        margin-bottom: 15px;
+        background-color: #fbfbfb;
+
+    }
+
+    .product-title{
+        padding-right: 10px;
+        padding-top: 8px;
+        width: 50%;
+        font-size: 15px;
+        font-weight: bold;
+        color: #d32f30;
+
+        @media only screen and (max-width: 768px) {
+            /* For mobile phones: */ 
+            font-weight: bold;
+            color: #d32f30;      
+            display: inline;
+            padding-right: 10px;
+            width: 50%;
+        }
+    }
+    .img-box{
+        width: 168px;
+        margin-left: 7px;
+        float: left;
+        margin-top: 5px;
+
+        @media only screen and (max-width: 768px) {
+            /* For mobile phones: */       
+            width: 88px;
+            margin-left: 5px;
+            float: left;
+            margin-top: 5px;
+        }
+    }
+    .product-details{
+        display: inline-block;
+        width: 46%;
+        font-size: 12px;
+        padding-right: 10px;
+        color: #807d7d;
+        padding-top: 2px;
+
+        @media only screen and (max-width: 768px) {
+            /* For mobile phones: */       
+            display: inline-block;
+            width: 50%;
+            font-size: 12px;
+            padding-right: 10px;
+            color: #807d7d;
+        }
+    }
+    .price{
+        font-size: 20px;
+        @media only screen and (max-width: 768px) {
+            /* For mobile phones: */    
+            font-size: 16px;   
+       }
+    }
+ }
+}
+    
+.product-not-found{
+    height: 500px;
+}
