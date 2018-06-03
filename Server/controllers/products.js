@@ -76,7 +76,7 @@ buildQuerySearch = function (req, param) {
         var _priceQuery = "";
         if (req.body[param] !== null && req.body[param] !== undefined && req.body[param] !== "" && req.body[param]) {
 
-            if (req.body[param] === "1000") {
+            if (req.body[param] === 1000) {
                 return param = { $gt: parseInt(req.body[param]) , $lt: 10000 };
 
             } else {
