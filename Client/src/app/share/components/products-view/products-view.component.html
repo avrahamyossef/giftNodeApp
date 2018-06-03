@@ -1,24 +1,37 @@
 <div class="container product-view-page" *ngIf="productsList.length > 0" style="clear: both; display: block; width: 100%">
+  <router-outlet></router-outlet>
+
   <!-- <h5>
     מצאנו {{productsList.length}} תוצאות
   </h5> -->
 
-  <div class="col-lg-12" style="overflow-x: hidden; height:550px; overflow-y: scroll">
+  <div class="col-lg-12 product-view-content">
     <div class="products-found">
-      <h5>תוצאות:</h5>
+      <h6>תוצאות: ({{productsList.length}})</h6>
     </div>
-    <div class="product-row" *ngFor="let product of productsList">
+    <div class="product-row" *ngFor="let product of productsList" on-mouseover='onItemMouseOver()'>
       <div class="product-title">{{product.Name}}</div>
+      <div *ngIf="product.Distance" class="distance">{{product.Distance}}
+        <span class="gift-location-icon"></span>
+      </div>
+      <i *ngIf="loadingDistance" class="distance-loader fa fa-spinner fa-spin"></i>
+
       <!-- <img *ngFor="let img of product.Images" src="{{img}}" width="340" height="430" /> -->
       <div class="img-box">
         <img src="{{product.Images[0]}}" width="100%" height="100%">
       </div>
 
       <div class="product-details">
-        <p>{{product.Description}}</p>
-        <div class="price">
-         מחיר: {{product.Price}} ₪ 
+        <div class="store-name">
+          {{product.StoreName}}
         </div>
+        <div class="city-address">
+          {{product.City}}, {{product.StoreAddress}}
+        </div>
+      </div>
+
+      <div class="price">
+        {{product.Price}} ₪
       </div>
     </div>
 
@@ -28,4 +41,24 @@
 
 <div class="container product-not-found" *ngIf="productsList.length === 0">
   {{notFoundMessage}}
+</div>
+
+
+
+<div *ngIf="(isShowNudgeBanner && productsList.length > 0)" id="container-popup-location" class="toast-bottom-left">
+  <i class="fa fa-close" (click)="hideNudgeBanner()"></i>
+  <div class="toast toast-warning" aria-live="assertive" style="display: block;">
+    <div class="toast-message">מיקומך אינו מדוייק, אנא הזן מיקום.
+      <div class="no-gps-notify-box">
+        <!-- <input id="address" type="text" placeholder="הזן כתובת עיר/רחוב..." /> -->
+
+        <div id="locationField">
+          <input id="autocompleteAddress" type="text" class="form-control" placeholder="הזן כתובת עיר/רחוב..." name="Location" [(ngModel)]="address"
+            #LocationCtrl="ngModel" Googleplace (setAddress)="getAddressOnChange($event,LocationCtrl)">
+        </div>
+      </div>
+      <br>
+      <button (click)="searchAddress()" class="btn btn-outline-light" id="btn" role="button">חפש </button>
+    </div>
+  </div>
 </div>

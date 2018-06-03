@@ -45,7 +45,8 @@ exports.getList = function (req, res) {
         Events: buildQuerySearch(req, "eventIds"),
         Age: buildQuerySearch(req, "ageIds"),
         Intersts: buildQuerySearch(req, "interestsIds"),
-        Relationships: buildQuerySearch(req, "relationshipsIds")
+        Relationships: buildQuerySearch(req, "relationshipsIds"),
+        Price: buildQuerySearch(req, "price")
     };
 
     Products.find(query).exec(function (err, response) {
@@ -70,14 +71,32 @@ exports.getList = function (req, res) {
 };
 
 buildQuerySearch = function (req, param) {
-    var _dataIds = [];
-    console.log("buildQuerySearch start req: " + req.body[param]);
-    //build query for search by param - return array of ids
-    if (req.body[param] !== null && req.body[param] !== undefined && req.body[param] !== "" && req.body[param]) {
-        _dataIds = JSON.parse("[" + req.body[param] + "]");
+
+    if (param === "price") {
+        var _priceQuery = "";
+        if (req.body[param] !== null && req.body[param] !== undefined && req.body[param] !== "" && req.body[param]) {
+
+            if (req.body[param] === "1000") {
+                return param = { $gt: parseInt(req.body[param]) , $lt: 10000 };
+
+            } else {
+                return param = { $gt: 0, $lt: parseInt(req.body[param]) };
+            }
+        }
+        else {
+            return param = { $exists: true };
+        }
     }
     else {
-        return _dataIds = { $exists: true };
+        var _dataIds = [];
+        console.log("buildQuerySearch start req: " + req.body[param]);
+        //build query for search by param - return array of ids
+        if (req.body[param] !== null && req.body[param] !== undefined && req.body[param] !== "" && req.body[param]) {
+            _dataIds = JSON.parse("[" + req.body[param] + "]");
+        }
+        else {
+            return _dataIds = { $exists: true };
+        }
+        return _dataIds;
     }
-    return _dataIds;
 }

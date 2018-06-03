@@ -1,76 +1,64 @@
-
 <!--Section heading-->
-<h5 class="section-heading pt-4" style="text-align: center;color: #d32f30;font-size: 28px;margin-bottom: 30px;"> איזה מתנה לחפש ?</h5>
+<div class="search-gift-area">
+  <h5 class="section-heading pt-4" style="text-align: center;color: #d32f30;font-size: 28px;margin-bottom: 30px;"> איזה מתנה לחפש ?</h5>
 
-<div id="startLat"></div>
-<div id="startLon"></div>
-<div class="images-male-icon">
-
-  <div class="text">בשבילו</div>
-</div>
-
-<div class="images-female-icon">
-
-  <div class="text">בשבילה</div>
-</div>
-
-<div class="col-lg-4 pull-right" style="clear: both;">
-  <div class="pq">מה האירוע ?</div>
-  <div class="d-flex">
-    <app-form-group-select [control]="eventControl" [idValue]="eventId" (change)="filterChange()" [options]="eventsOptions">
-    </app-form-group-select>
+  <div id="startLat"></div>
+  <div id="startLon"></div>
+  <div class="images-male-icon">
+    <div class="text">בשבילו</div>
   </div>
-</div>
 
-<div class="col-lg-4 pull-right">
-  <div class="pq">מה הקרבה ?</div>
-  <div class="d-flex">
-    <app-form-group-select [control]="relationshipControl" [idValue]="relationshipId" (change)="filterChange()" [options]="relationshipsOptions">
-    </app-form-group-select>
+  <div class="images-female-icon">
+
+    <div class="text">בשבילה</div>
   </div>
-</div>
 
-
-<div class="col-lg-4 pull-right">
-  <div class="pq">מה הגיל ?</div>
-  <div class="d-flex">
-    <app-form-group-select [control]="ageControl" [idValue]="ageId" (change)="filterChange()" [options]="ageOptions">
-    </app-form-group-select>
-  </div>
-</div>
-
-<div class="pt-3 col-lg-4 pull-right slidecontainer">
-  <div class="pq">מה המחיר ?</div>
-  <div class="track">
-    <div #rangeCloud class="range-cloud" title="range" [ngClass]="{'visible': this.visibility, 'hidden': !this.visibility}">
-      <span class="text-transform">עד ₪ {{range}}</span>
+  <div class="col-lg-4 pull-right" style="clear: both;">
+    <div class="pq">מה האירוע ?</div>
+    <div class="d-flex">
+      <app-form-group-select [control]="eventControl" [idValue]="eventId" (change)="filterChange()" [options]="eventsOptions">
+      </app-form-group-select>
     </div>
   </div>
-  <input #input name="range" step="50" type="range" min="0" max="1000" (focus)="visibility = true" (blur)="visibility = false"
-    [(ngModel)]="range" (change)="coverage()">
-</div>
 
-<div class="pt-3 col-lg-6 pull-right">
-  <div class="pq">מה התחומי עניין ?</div>
-  <div class="d-flex">
-    <app-form-group-multi-toggle [control]="interestControl" [options]="interestsOptions">
-    </app-form-group-multi-toggle>
+  <div class="col-lg-4 pull-right">
+    <div class="pq">מה הקרבה ?</div>
+    <div class="d-flex">
+      <app-form-group-select [control]="relationshipControl" [idValue]="relationshipId" (change)="filterChange()" [options]="relationshipsOptions">
+      </app-form-group-select>
+    </div>
   </div>
-</div>
 
-<div class="search-area">
-  <button class="btn btn-danger" (click)="searchProcuts()">חיפוש</button>
-</div>
 
-<div *ngIf="isShowNudgeBanner" id="toast-container" class="toast-bottom-left">
-  <div class="toast toast-warning" aria-live="assertive" style="display: block;">
-    <button class="toast-close-button" role="button">
-      <i class="icon close"></i>
-    </button>
-    <div class="toast-message">מיקומך אינו מדוייק. יש לוודא ששירותי המיקום פעילים.
-      <div class="no-gps-notify-box">
-        <a class="get-user-location">הזן מיקום</a>
+  <div class="col-lg-4 pull-right">
+    <div class="pq">מה הגיל ?</div>
+    <div class="d-flex">
+      <app-form-group-select [control]="ageControl" [idValue]="ageId" (change)="filterChange()" [options]="ageOptions">
+      </app-form-group-select>
+    </div>
+  </div>
+
+  <div class="pt-3 col-lg-4 pull-right slidecontainer">
+    <div class="pq">מה המחיר ?</div>
+    <div class="track">
+      <div #rangeCloud class="range-cloud" title="range" [ngClass]="{'visible': this.visibility, 'hidden': !this.visibility}">
+        <span class="text-transform">{{priceRangeText}} ₪ {{range}}</span>
       </div>
     </div>
+    <input #input name="range" step="50" type="range" min="0" max="1000" (change)="filterChange()" [formControl]="priceControl" (focus)="visibility = true" (blur)="visibility = false"
+      [(ngModel)]="range" (change)="coverage()">
   </div>
+
+  <div class="pt-3 col-lg-6 pull-right">
+    <div class="pq">מה התחומי עניין ?</div>
+    <div class="d-flex">
+      <app-form-group-multi-toggle [control]="interestControl" (change)="filterChange()" [options]="interestsOptions">
+      </app-form-group-multi-toggle>
+    </div>
+  </div>
+
+  <div class="search-area">
+    <button class="btn btn-danger" (click)="searchProcuts()">חיפוש</button>
+  </div>
+
 </div>

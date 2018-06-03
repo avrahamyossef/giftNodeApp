@@ -23,7 +23,18 @@ export class FormGroupMultiToggleComponent implements OnInit {
     this.options.forEach((item) => {
       if (!isNullOrUndefined(this.control.value) && item.value.toString() === this.control.value.toString()) {
         item.selected = true;
-      } else {
+      }
+      //if return more the one selected value - run on all val splited by ','
+      else if (!isNullOrUndefined(this.control.value)) {
+        if (this.control.value.toString().indexOf(',') > -1) {
+          var values = this.control.value.toString().split(',');
+          values.forEach(element => {
+            if (item.key.toString() == element)
+              item.selected = true;
+          });
+        }
+      }
+      else {
         item.selected = false;
       }
     });

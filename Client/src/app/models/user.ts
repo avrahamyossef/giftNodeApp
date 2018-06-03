@@ -12,3 +12,9 @@ export interface UserModel {
     UserName: string,
     Email: string
 }
+export interface UserLocationModel {
+    location: {
+        lat: number,
+        lng: number
+    }
+}

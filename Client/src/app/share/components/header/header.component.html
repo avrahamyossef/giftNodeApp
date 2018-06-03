@@ -5,6 +5,9 @@
     <logo>
       <a class="logo navbar-brand" href="#">
         <strong>Regalo</strong>
+        <div style="float: right;margin-left: 3px;">
+          <img src="/assets/images/icon.png" width="30px;" height="30px;"/>
+        </div>
       </a>
     </logo>
     <links>
@@ -41,10 +44,10 @@
  -->
 
   <ng-template #popupLogin>
-      <app-popup-wrapper [modalRef]="modalRef">
-        <app-popup-login [modalRef]="modalRef"></app-popup-login>
-      </app-popup-wrapper>
-    </ng-template>
+    <app-popup-wrapper [modalRef]="modalRef">
+      <app-popup-login [modalRef]="modalRef"></app-popup-login>
+    </app-popup-wrapper>
+  </ng-template>
 
 
 </header>

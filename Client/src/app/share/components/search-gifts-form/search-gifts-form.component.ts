@@ -26,14 +26,15 @@ export class SearchGiftsFormComponent implements OnInit {
   public interestControl: FormControl;
   public relationshipControl: FormControl;
   public ageControl: FormControl;
+  public priceControl: FormControl;
+  public genderControl: FormControl;
   public eventId: string;
   public Filters: models.FiltersModel;
-
-  public isShowNudgeBanner: boolean = false;
+  public priceRangeText: string = "עד";
 
   @ViewChild('input') input: ElementRef;
   @ViewChild('rangeCloud') rangeCloud: ElementRef;
-  range: any = 500;
+  range: any = this.userService.Filters ? this.userService.Filters.Price : 500;
 
   constructor(private renderer: Renderer2, private productService: ProductService,
     private userService: UserService, private router: RouterService,
@@ -49,59 +50,14 @@ export class SearchGiftsFormComponent implements OnInit {
     this.interestControl = new FormControl(null, Validators.required);
     this.relationshipControl = new FormControl(null, Validators.required);
     this.ageControl = new FormControl(null, Validators.required);
-
-
+    this.priceControl = new FormControl(null, Validators.required);
+    this.genderControl = new FormControl(null, Validators.required);
 
     if (!R.isNil(this.userService.Filters)) {
       this.initFilterInfo();
       this.initControls();
     }
-
-    var startPos;
-    var nudge = document.getElementById("nudge");
-
-    var nudgeTimeoutId = setTimeout(this.showNudgeBanner(), 5000);
-
-    var geoSuccess = function (position) {
-      this.hideNudgeBanner();
-      // We have the location, don't display banner
-      clearTimeout(nudgeTimeoutId);
-
-      // Do magic with location
-      startPos = position;
-      document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-      document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    };
-    var geoError = function (error) {
-      console.log('Error occurred. Error code: ' + error.code);
-      this.showNudgeBanner();
-      // error.code can be:
-      //   0: unknown error
-      //   1: permission denied
-      //   2: position unavailable (error response from location provider)
-      //   3: timed out
-      // The user didn't accept the callout
-    };
-
-
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-    // check for Geolocation support
-    // if (navigator) {
-    //   navigator.geolocation.getCurrentPosition(pos => {
-
-    //     var latitude = pos.coords.latitude;
-    //     var longitude = pos.coords.longitude;
-    //     alert(latitude + "  " + longitude);
-    //   })
-    // }
   }
-  showNudgeBanner() {
-    this.isShowNudgeBanner = true;
-  };
-
-  hideNudgeBanner = function () {
-    this.isShowNudgeBanner = false;
-  };
 
   initFilterInfo() {
     this.Filters = Object.assign({}, this.userService.Filters);
@@ -112,7 +68,9 @@ export class SearchGiftsFormComponent implements OnInit {
       Age: this.ageControl.value,
       Event: this.eventControl.value,
       Interests: this.interestControl.value,
-      Relationships: this.relationshipControl.value
+      Relationships: this.relationshipControl.value,
+      Price: this.priceControl.value,
+      Gender: this.genderControl.value
     }
 
     this.userService.updateFilters(this.Filters);
@@ -124,7 +82,14 @@ export class SearchGiftsFormComponent implements OnInit {
     }
     const maxValue = this.input.nativeElement.getAttribute('max');
     const cloudRange = (this.range / maxValue) * 100;
-    this.renderer.setStyle(this.rangeCloud.nativeElement, 'left', cloudRange + '%')
+    this.renderer.setStyle(this.rangeCloud.nativeElement, 'left', cloudRange + '%');
+
+    if (this.range === parseInt(maxValue)) {
+      this.priceRangeText = "מעל"
+    }
+    else {
+      this.priceRangeText = "עד"
+    }
   }
 
   initControls() {
@@ -132,6 +97,8 @@ export class SearchGiftsFormComponent implements OnInit {
     this.interestControl.setValue(this.Filters.Interests);
     this.relationshipControl.setValue(this.Filters.Relationships);
     this.ageControl.setValue(this.Filters.Age);
+    this.priceControl.setValue(this.Filters.Price);
+    this.genderControl.setValue(this.Filters.Gender);
   }
 
 
@@ -142,7 +109,8 @@ export class SearchGiftsFormComponent implements OnInit {
       this.eventControl.value,
       this.ageControl.value,
       this.interestControl.value,
-      this.relationshipControl.value
+      this.relationshipControl.value,
+      this.priceControl.value
     ).subscribe((response) => {
       if (response.IsOk) {
         this.appService.showFullPageLoader = false;

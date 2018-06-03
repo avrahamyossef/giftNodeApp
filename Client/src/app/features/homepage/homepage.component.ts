@@ -37,8 +37,6 @@ export class HomePageComponent implements OnInit {
         this.appLoaded = true;
         this.appService.showFullPageLoader = false;
 
-        console.log('appLoaded is:' + this.appLoaded);
-
         switch (data[0]) {
           case "events":
             //this.eventsList = data[1].Results;
@@ -69,7 +67,6 @@ export class HomePageComponent implements OnInit {
         }
       }
     });
-    console.log('appLoaded under buildAgeOptions is:' + this.appLoaded);
   }
 
   buildAgeOptions() {

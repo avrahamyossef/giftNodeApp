@@ -16,14 +16,16 @@ export class ApiProductsService {
      * @param {string} interests
      * @param {string} relationships
      * @param {string} age
+     * @param {number} price
      * @returns {Observable<any> | ((result) => Observable<any>)}
      */
-    getProducts(event: string, age: string, interests: string, relationshipsIds: string) {
+    getProducts(event: string, age: string, interests: string, relationshipsIds: string, price: number ) {
         const params = {
             eventIds: event,
             ageIds: age,
             interestsIds: interests,
-            relationshipsIds: relationshipsIds
+            relationshipsIds: relationshipsIds,
+            price: price
         };
         const actionName = 'products';
 

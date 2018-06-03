@@ -16,9 +16,6 @@ export class AppComponent {
   public interestsList: models.InterestsModel[];
   public relationshipsList: models.RelationshipModel[];
 
-
-  @ViewChild('entrancePopup') entrancePopup: ElementRef;
-
   constructor(private appService: AppService, private modalService: BsModalService) {
   }
 

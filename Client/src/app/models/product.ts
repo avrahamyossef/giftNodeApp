@@ -8,6 +8,12 @@ export interface ProductModel {
     Relationships: any[],
     Events: any[],
     Age: any[],
-    StoreId: Number,
-    CreatedDate: Date
+    StoreName: Number,
+    CreatedDate: Date,
+    StoreLocationLng: DoubleRange,
+    StoreLocationLat: DoubleRange,
+    StoreAddress: String,
+    City: String,
+    Phone: String,
+    StoreHours: any[]
 }
