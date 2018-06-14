@@ -4,18 +4,24 @@ var mongoose = require('mongoose'),
 
 var productModel = new Schema({
 
-    ProductId: { type: Number, required: true },
-    Name: { type: String, required: true },
-    Description: { type: String, required: true },
-    Price: { type: Number, required: true },
-    Images: { type: Object, required: true },
-    Intersts: { type: Object, required: true },
-    Relationships: { type: Object, required: true },
-    Events: { type: Object, required: true },
-    Age: { type: Object, required: true },
-    StoreId: { type: Number, required: true },
-    CreatedDate: { type: Date, required: true },
-
+    ProductId: { type: Number, required: false },
+    Name: { type: String, required: false },
+    Description: { type: String, required: false },
+    Price: { type: Number, required: false },
+    Images: { type: Object, required: false },
+    Intersts: { type: Object, required: false },
+    Relationships: { type: Object, required: false },
+    Events: { type: Object, required: false },
+    Age: { type: Object, required: false },
+    StoreId: { type: Number, required: false },
+    CreatedDate: { type: Date, required: false },
+    StoreLocationLng: {type: Number, required: false},
+    StoreLocationLat: {type: Number, required: false},
+    StoreAddress: {type: String, required: false},
+    City: {type: String, required: false},
+    Phone: {type: String, required: false},
+    Distance: {type: String, required: false}
+    
 });
 
 module.exports = mongoose.model('product', productModel);

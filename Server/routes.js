@@ -21,8 +21,9 @@ module.exports = function (app) {
     app.get('/relationship', Relationship.list);
     app.get('/interests', Interests.list);
     app.post('/products', Products.getList);
+    app.post('/product/getProductById', Products.getProductById);
 
     //.6 Application Routes - with Authenticat
-    //  app.post('/auth/login', ensureAuthenticated, Auth.login);
+    app.post('/product/create', ensureAuthenticated, Products.create);
 
 };
