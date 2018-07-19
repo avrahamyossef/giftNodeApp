@@ -34,6 +34,10 @@ mongoose.connect(config.MONGO_URI, {}, (err) => {
 // 6. Load app routes
 require('./routes')(app);
 
+app.on('listening',function(){
+    console.log('ok, server is running');
+});
+
 // 7. Start the server
 app.listen(config.LISTEN_PORT, function () {
     console.log('listening on port ' + config.LISTEN_PORT);
