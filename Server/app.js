@@ -24,7 +24,12 @@ if (app.get('env') === 'production') {
 }
 
 // 5. Connect to MongoDB
-mongoose.connect(config.MONGO_URI).then(() => {
+const option = {
+    socketTimeoutMS: 30000,
+    keepAlive: true,
+    reconnectTries: 30000
+};
+mongoose.connect(config.MONGO_URI, option).then(() => {
 console.log("Connected to MongoDatabase");
 }).catch((err) => {
     console.log("Not Connected to Database ERROR! ", err);
