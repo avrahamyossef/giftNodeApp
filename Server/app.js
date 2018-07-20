@@ -24,10 +24,20 @@ if (app.get('env') === 'production') {
 }
 
 // 5. Connect to MongoDB
-mongoose.connect(config.MONGO_URI).then(() => {
-console.log("Connected to MongoDatabase");
-}).catch((err) => {
-    console.log("Not Connected to Database ERROR! ", err);
+mongoose.connect(config.MONGO_URI);
+
+// mongoose.connect(config.MONGO_URI).then(() => {
+// console.log("Connected to MongoDatabase");
+// }).catch((err) => {
+//     console.log("Not Connected to Database ERROR! ", err);
+// });
+
+var db = mongoose.connection;
+ 
+db.on('error', console.error.bind(console, 'Not Connected to Database ERROR:'));
+ 
+db.once('open', function() {
+  console.log("Connect to MongoDB Successful!");
 });
 
 // mongoose.connect(config.MONGO_URI, {}, (err) => {
