@@ -1,6 +1,6 @@
 module.exports = {
     // 1. MongoDB
-    MONGO_URI: 'mongodb://avrahamyossef3:Ay748596@giftmongoddb-shard-00-00-mpcwb.mongodb.net,giftmongoddb-shard-00-01-mpcwb.mongodb.net,giftmongoddb-shard-00-02-mpcwb.mongodb.net/test?ssl=true&replicaSet=GiftMongodDb-shard-0&authSource=admin',
+    MONGO_URI: "mongodb+srv://giftmongoddb-mpcwb.mongodb.net/test",
 
     // 2. JWT
     TOKEN_SECRET: process.env.TOKEN_SECRET || 'pvpnCCZfwOF85pBjbOebZiYIDhZ3w9LZrKwBZ7152K89mPCOHtbRlmr5Z91ci4L',
