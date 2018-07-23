@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var cors = require("cors");
 var logger = require('morgan');
+var pemFile = require('fs').readFileSync("/etc/ssl/certs/ssl-cert-snakeoil.pem");
+var caFile = require('fs').readFileSync("/etc/ssl/certs/ca-certificates.crt");
 
 // 2. Include Configuration
 var config = require('./config');
@@ -29,7 +31,14 @@ const option = {
     keepAlive: true,
     reconnectTries: 30000
 };
-mongoose.connect(config.MONGO_URI, option).then(() => {
+mongoose.connect(config.MONGO_URI, option, {
+    server: {
+        sslKey: pemFile,
+        sslCert: pemFile,
+        sslCa : caFile,
+        sslValidate: true // set to 'false' if CA is self-generated certificate
+    }
+}).then(() => {
 console.log("Connected to MongoDatabase");
 }).catch((err) => {
     console.log("Not Connected to Database ERROR! ", err);
