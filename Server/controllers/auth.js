@@ -79,7 +79,7 @@ exports.login = function (req, res) {
 
 exports.checkIfUserExist = function (req, res) {
 
-    Products.findOne({ "email": req.body.email.toLowerCase() }).exec(function (err, response) {
+    User.findOne({ "email": req.body.email.toLowerCase() }).exec(function (err, response) {
         if (err) {
             return res.status(500).send({
                 IsOk: false,
