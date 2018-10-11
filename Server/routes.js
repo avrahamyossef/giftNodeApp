@@ -5,6 +5,7 @@ var Events = require('./controllers/events.js');
 var Relationship = require('./controllers/relationships.js');
 var Interests = require('./controllers/interests.js');
 var Products = require('./controllers/products.js');
+var Supplier = require('./controllers/supplier.js');
 
 // 2. Authentication Middleware
 var ensureAuthenticated = require('./utils').ensureAuthenticated;
@@ -17,6 +18,10 @@ module.exports = function (app) {
     app.post('/auth/signup', Auth.signup);
     app.post('/auth/checkIfUserExist', Auth.checkIfUserExist);
     app.post('/auth/signUpProvider', Auth.signupProvider);
+
+    app.post('/auth/signupSupplier', Supplier.signup);
+    app.post('/auth/loginSupplier', Supplier.login);
+
 
     // 5. Application Routes
     app.get('/events', Events.list);
