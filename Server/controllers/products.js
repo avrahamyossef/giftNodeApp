@@ -73,10 +73,10 @@ exports.create = function (req, res) {
         Description: req.body.description,
         Price: req.body.price,
         Images: req.body.images,
-        Intersts: req.body.intersts,
-        Relationships: req.body.relationships,
-        Events: req.body.events,
-        Age: req.body.age,
+        Intersts: buildQueryForCreate(req, "intersts"),
+        Relationships: buildQueryForCreate(req, "relationships"),
+        Events: buildQueryForCreate(req, "events"),
+        Age: buildQueryForCreate(req, "age"),
         StoreName: req.body.storeName,
         CreatedDate: new Date(),
         StoreLocationLng: req.body.storeLocationLng,
@@ -139,6 +139,15 @@ buildQuerySearch = function (req, param) {
     }
 }
 
+
+buildQueryForCreate = function (req, param) {
+    var _dataIds = [];
+    //build query for search by param - return array of ids
+    if (req.body[param] !== null && req.body[param] !== undefined && req.body[param] !== "" && req.body[param]) {
+        _dataIds = JSON.parse("[" + req.body[param] + "]");
+    }
+    return _dataIds;
+}
 // get Next Sequence Value of product id
 // function getNextSequenceValue(sequenceName) {
 //     debugger;
