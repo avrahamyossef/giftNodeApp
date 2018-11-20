@@ -10,6 +10,8 @@ exports.listUrlFiles = (req, res) => {
 	fs.readdir(uploadFolder, (err, files) => {
 		for (let i = 0; i < files.length; ++i) {
 			files[i] = process.env.PWD  + '/uploads/' + files[i];
+			files[i] =  new Buffer(files[i]).toString('base64');
+
 		}
 		
 		res.send(files);
