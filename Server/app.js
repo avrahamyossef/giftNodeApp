@@ -17,11 +17,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 global.__basedir = process.env.PWD;
 
-const corsOptions = {
-  origin: 'https://regaloapp.xyz',
-  optionsSuccessStatus: 200
-}
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: 'https://regaloapp.xyz',
+//   optionsSuccessStatus: 200
+// }
+// app.use(cors(corsOptions));
 
 // 4. Force https in production
 if (app.get('env') === 'production') {
