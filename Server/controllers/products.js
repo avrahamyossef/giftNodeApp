@@ -69,22 +69,22 @@ exports.create = function (req, res) {
 
     Products.create({
         //ProductId: getNextSequenceValue("ProductId"),
-        Name: req.body.name,
-        Description: req.body.description,
-        Price: req.body.price,
-        Images: req.body.images,
+        Name: req.body.Name,
+        Description: req.body.Description,
+        Price: req.body.Price,
+        Images: req.body.Images,
         Intersts: buildQueryForCreate(req, "Intersts"),
         Relationships: buildQueryForCreate(req, "Relationships"),
         Events: buildQueryForCreate(req, "Events"),
         Age: buildQueryForCreate(req, "Age"),
-        StoreName: req.body.storeName,
+        StoreName: req.body.StoreName,
         CreatedDate: new Date(),
-        StoreLocationLng: req.body.storeLocationLng,
-        StoreLocationLat: req.body.storeLocationLat,
-        StoreAddress: req.body.storeAddress,
-        City: req.body.city,
-        Phone: req.body.phone,
-        StoreHours: req.body.storeHours
+        StoreLocationLng: req.body.StoreLocationLng,
+        StoreLocationLat: req.body.StoreLocationLat,
+        StoreAddress: req.body.StoreAddress,
+        City: req.body.City,
+        Phone: req.body.Phone,
+        StoreHours: req.body.StoreHours
 
     }, function (err, response) {
         if (err) {
