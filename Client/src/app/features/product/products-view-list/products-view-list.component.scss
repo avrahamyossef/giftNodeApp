@@ -1,0 +1,19 @@
+.container {
+    padding-top: 120px;
+    &.product-view-wrapper {
+      position: relative;
+    }
+
+
+  .create_account-content {
+    display: inline-block;
+    width: 393px;
+    max-width: 100%;
+  }
+}
+
+.product-view-wrapper{
+  text-align: right;
+  padding-top: 120px;
+  min-height: calc(100vh - 145px);
+}

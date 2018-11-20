@@ -6,6 +6,8 @@ var Relationship = require('./controllers/relationships.js');
 var Interests = require('./controllers/interests.js');
 var Products = require('./controllers/products.js');
 var Supplier = require('./controllers/supplier.js');
+var upload = require('../config/multer.config.js');
+var fileWorker = require('../controllers/file.controller.js');
 
 // 2. Authentication Middleware
 var ensureAuthenticated = require('./utils').ensureAuthenticated;
@@ -32,5 +34,10 @@ module.exports = function (app) {
 
     //.6 Application Routes - with Authenticat
     app.post('/product/create', ensureAuthenticated, Products.create);
+
+    //7. files images upload/download
+    app.post('/file/upload', upload.single("file"), fileWorker.uploadFile);
+    app.get('/file/all', fileWorker.listUrlFiles);
+    app.get('/file/:filename', fileWorker.downloadFile);
 
 };
