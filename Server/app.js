@@ -15,13 +15,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-global.__basedir = process.env.PWD;
+global.__basedir = __dirname;
 
-// const corsOptions = {
-//   origin: 'https://regaloapp.xyz',
-//   optionsSuccessStatus: 200
-// }
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: 'https://localhost:3000',
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 
 // 4. Force https in production
 if (app.get('env') === 'production') {
@@ -53,6 +53,7 @@ console.log("Connected to MongoDatabase");
 // 6. Load app routes
 require('./routes')(app);
 
+global.__basedir = __dirname;
 
 
 // 7. Start the server

@@ -1,5 +1,4 @@
 // 1. Include config and modules
-var User = require('./models/user');
 var Auth = require('./controllers/auth.js');
 var Events = require('./controllers/events.js');
 var Relationship = require('./controllers/relationships.js');
@@ -40,4 +39,4 @@ module.exports = function (app) {
     app.get('/file/all', fileWorker.listUrlFiles);
     app.get('/file/:filename', fileWorker.downloadFile);
 
-};
+};  

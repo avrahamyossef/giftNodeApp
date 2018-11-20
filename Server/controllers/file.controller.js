@@ -1,5 +1,5 @@
 
-const uploadFolder = __basedir + '/uploads/';
+const uploadFolder = process.env.PWD + '/uploads/';
 const fs = require('fs');
  
 exports.uploadFile = (req, res) => {
@@ -9,7 +9,7 @@ exports.uploadFile = (req, res) => {
 exports.listUrlFiles = (req, res) => {
 	fs.readdir(uploadFolder, (err, files) => {
 		for (let i = 0; i < files.length; ++i) {
-			files[i] = "https://regaloapp.xyz/api/file/" + files[i];
+			files[i] = process.env.PWD  + '/uploads/' + files[i];
 		}
 		
 		res.send(files);
