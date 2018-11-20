@@ -15,6 +15,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+global.__basedir = process.env.PWD;
+
+const corsOptions = {
+  origin: 'https://regaloapp.xyz',
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+
 // 4. Force https in production
 if (app.get('env') === 'production') {
     app.use(function (req, res, next) {
@@ -44,6 +52,8 @@ console.log("Connected to MongoDatabase");
 
 // 6. Load app routes
 require('./routes')(app);
+
+
 
 // 7. Start the server
 app.listen(config.LISTEN_PORT, function () {
