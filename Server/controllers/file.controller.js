@@ -1,5 +1,5 @@
 
-const uploadFolder = process.env.PWD.replace("Server","Client") + "/uploads";
+const uploadFolder = "/var/www/html/uploads/";
 const fs = require('fs');
  
 exports.uploadFile = (req, res) => {
