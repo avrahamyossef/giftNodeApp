@@ -9,7 +9,7 @@ exports.uploadFile = (req, res) => {
 exports.listUrlFiles = (req, res) => {
 	fs.readdir(uploadFolder, (err, files) => {
 		for (let i = 0; i < files.length; ++i) {
-			files[i] = "Https://regaloapp.xyz/api/file/" + files[i];
+			files[i] = files[i];
 		}
 		
 		res.send(files);
