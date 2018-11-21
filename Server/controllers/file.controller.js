@@ -1,5 +1,5 @@
 
-const uploadFolder = process.env.PWD + '/uploads/';
+const uploadFolder = process.env.PWD.replace("Server","Client") + "/uploads";
 const fs = require('fs');
  
 exports.uploadFile = (req, res) => {
