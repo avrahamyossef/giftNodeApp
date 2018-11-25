@@ -3,7 +3,7 @@ const uploadFolder = "/var/www/html/uploads/";
 const fs = require('fs');
 
 exports.uploadFile = (req, res) => {
-	res.send('File uploaded successfully! -> filename = ' + req.file.filename);
+	res.send('File uploaded successfully!');
 	// if (err) {
 	// 	res.status(404).json({
 	// 		IsOk: false,
