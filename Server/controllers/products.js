@@ -1,6 +1,8 @@
 
 // 1. Load the products model
 var Products = require('../models/products.js');
+var Images = require('../models/images.js');
+
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
@@ -106,6 +108,37 @@ exports.create = function (req, res) {
         });
     });
 }
+
+
+exports.saveImages = function (req, res) {
+
+    Images.create({
+        supplierId: req.body.SupplierId,
+        supplierName: req.body.SupplierName,
+        productId: req.body.ProductId,
+        imagesSrc: buildQueryForCreate(req, "imagesSrc")
+
+    }, function (err, response) {
+        if (err) {
+            return res.status(500).send({
+                IsOk: false,
+                errorMessage: 'Error on the server.'
+            });
+        }
+        if (!response) {
+            return res.status(404).send({
+                IsOk: false,
+                errorMessage: 'Error on save images.'
+            });
+        }
+
+        res.status(200).send({
+            IsOk: true,
+            Results: response,
+        });
+    });
+}
+
 
 //build query for search param in mongo DB
 buildQuerySearch = function (req, param) {

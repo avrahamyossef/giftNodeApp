@@ -1,9 +1,11 @@
+const path = require('path').dirname(require.main.filename)
 
-const uploadFolder = "/var/www/html/uploads/";
+const uploadFolder = path.replace("Server","Client") + "/uploads";
+//"/var/www/html/uploads/";
 const fs = require('fs');
 
 exports.uploadFile = (req, res) => {
-	res.send('File uploaded successfully!');
+	res.send( req.files);
 	// if (err) {
 	// 	res.status(404).json({
 	// 		IsOk: false,
@@ -13,7 +15,7 @@ exports.uploadFile = (req, res) => {
 	// }
 	// res.status(200).json({
 	// 	IsOk: true,
-	// 	Results: "File is uploaded: " + req.file.filename
+	// 	Results: "File is uploaded: " + req.files
 	// });
 }
 
