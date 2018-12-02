@@ -1,7 +1,5 @@
-const path = require('path').dirname(require.main.filename)
 
-const uploadFolder = path.replace("Server","Client") + "/uploads";
-//"/var/www/html/uploads/";
+const uploadFolder = "/var/www/html/uploads/";
 const fs = require('fs');
 
 exports.uploadFile = (req, res) => {
