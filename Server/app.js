@@ -15,14 +15,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-global.__basedir = __dirname;
-
-const corsOptions = {
-  origin: 'https://localhost:3000',
-  optionsSuccessStatus: 200
-}
-app.use(cors(corsOptions));
-
 // 4. Force https in production
 if (app.get('env') === 'production') {
     app.use(function (req, res, next) {
@@ -43,18 +35,8 @@ console.log("Connected to MongoDatabase");
     console.log("Not Connected to Database ERROR! ", err);
 });
 
-// mongoose.connect(config.MONGO_URI, {}, (err) => {
-//     if (err) {
-//       throw err;
-//     }
-//     console.log('Connected succsesfuly to MongoDB.')
-//   });
-
 // 6. Load app routes
 require('./routes')(app);
-
-global.__basedir = __dirname;
-
 
 // 7. Start the server
 app.listen(config.LISTEN_PORT, function () {
