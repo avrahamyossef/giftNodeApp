@@ -35,3 +35,13 @@ exports.ensureAuthenticated = function (req, res, next) {
     next();
 
 };
+
+
+exports.buildQueryForCreate = function (req, param) {
+    var _dataIds = [];
+    //build query for search by param - return array of ids
+    if (req.body[param] !== null && req.body[param] !== undefined && req.body[param] !== "" && req.body[param]) {
+        _dataIds = JSON.parse("[" + req.body[param] + "]");
+    }
+    return _dataIds;
+}

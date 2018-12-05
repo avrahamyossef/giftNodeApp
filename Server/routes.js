@@ -30,6 +30,8 @@ module.exports = function (app) {
     app.get('/interests', Interests.list);
     app.post('/products', Products.getList);
     app.post('/product/getProductById', Products.getProductById);
+    app.post('/product/updateImages', Products.updateProductImages);
+
 
     //.6 Application Routes - with Authenticat
     app.post('/product/create', ensureAuthenticated, Products.create);

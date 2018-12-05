@@ -1,20 +1,36 @@
 
 const uploadFolder = "/var/www/html/uploads/";
 const fs = require('fs');
+var Images = require('../models/images.js');
+//var currentPath = process.cwd();
+//const uploadFolder = currentPath.replace("Server", "Client") + "/uploads";
 
 exports.uploadFile = (req, res) => {
-	res.send( req.files);
-	// if (err) {
-	// 	res.status(404).json({
-	// 		IsOk: false,
-	// 		errorMessage: 'Error uploading file.',
-	// 		error: err
-	// 	});
-	// }
-	// res.status(200).json({
-	// 	IsOk: true,
-	// 	Results: "File is uploaded: " + req.files
-	// });
+	//res.send( req.files);
+    Images.create({
+        supplierId: req.body.SupplierId,
+        supplierName: req.body.SupplierName,
+        productId: req.body.ProductId,
+        imagesSrc: req.files.map(function(e){return e.filename})
+
+    }, function (err, response) {
+        if (err) {
+            return res.status(500).send({
+                IsOk: false,
+                errorMessage: 'Error on the server.'
+            });
+        }
+        if (!response) {
+            return res.status(404).send({
+                IsOk: false,
+                errorMessage: 'Error on save images.'
+            });
+        }
+
+        res.status(200).send({
+            Results: response._doc.imagesSrc,
+        });
+    });
 }
 
 exports.listUrlFiles = (req, res) => {
