@@ -1,9 +1,9 @@
 
-//const uploadFolder = "/var/www/html/uploads/";
+const uploadFolder = "/var/www/html/uploads/";
 const fs = require('fs');
 var Images = require('../models/images.js');
-var currentPath = process.cwd();
-const uploadFolder = currentPath.replace("Server", "Client") + "/src/assets/uploads";
+//var currentPath = process.cwd();
+//const uploadFolder = currentPath.replace("Server", "Client") + "/src/assets/uploads";
 
 exports.uploadFile = (req, res) => {
     //res.send( req.files);

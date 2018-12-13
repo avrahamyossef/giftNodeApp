@@ -1,7 +1,7 @@
 
-var currentPath = process.cwd();
-const uploadFolder = currentPath.replace("Server", "Client") + "/src/assets/uploads";
-//const uploadFolder = '/var/www/html/uploads/';
+//var currentPath = process.cwd();
+//const uploadFolder = currentPath.replace("Server", "Client") + "/src/assets/uploads";
+const uploadFolder = '/var/www/html/uploads/';
 const multer = require('multer');
 
 var storage = multer.diskStorage({
