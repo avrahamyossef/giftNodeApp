@@ -1,7 +1,7 @@
 
-//var currentPath = process.cwd();
-//const uploadFolder = currentPath.replace("Server", "Client") + "/uploads";
-const uploadFolder = '/var/www/html/uploads/';
+var currentPath = process.cwd();
+const uploadFolder = currentPath.replace("Server", "Client") + "/src/assets/uploads";
+//const uploadFolder = '/var/www/html/uploads/';
 const multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -9,7 +9,8 @@ var storage = multer.diskStorage({
     callback(null, uploadFolder);
   },
   filename: function (req, file, callback) {
-    callback(null, file.originalname.split(".")[0] + "-" + Date.now() + "." + file.originalname.split(".")[1]);
+    var splitName = file.originalname.split(".");
+    callback(null, splitName[0] + "_" + Date.now() + "." + splitName[splitName.length - 1]);
   }
 });
 

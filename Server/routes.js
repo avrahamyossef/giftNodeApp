@@ -38,6 +38,7 @@ module.exports = function (app) {
 
     //7. files images upload/download
     app.post('/file/upload', upload.array("file", 6), fileController.uploadFile);
+    app.post('/file/delete', fileController.deleteFile);
     app.get('/file/all', fileController.listUrlFiles);
     app.get('/file/:filename', fileController.downloadFile);
 
