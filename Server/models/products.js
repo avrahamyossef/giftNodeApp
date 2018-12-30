@@ -20,8 +20,8 @@ var productModel = new Schema({
     StoreAddress: {type: String, required: false},
     City: {type: String, required: false},
     Phone: {type: String, required: false},
-    Distance: {type: String, required: false}
-    
+    Distance: {type: String, required: false},
+    LastModify: {type: Date, required:false}
 });
 
 module.exports = mongoose.model('product', productModel);

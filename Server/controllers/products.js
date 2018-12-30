@@ -82,7 +82,8 @@ exports.create = function (req, res) {
         StoreAddress: req.body.StoreAddress,
         City: req.body.City,
         Phone: req.body.Phone,
-        StoreHours: req.body.StoreHours
+        StoreHours: req.body.StoreHours,
+        LastModify: new Date()
 
     }, function (err, response) {
         if (err) {
