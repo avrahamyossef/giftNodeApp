@@ -8,6 +8,7 @@ var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config');
+var dnaUsersModel = require('../models/dnaUsersModel');
 
 
 exports.signup = function (req, res) {
@@ -126,3 +127,24 @@ exports.signupProvider = function (req, res) {
             });
         });
 };
+
+
+exports.registerDnaUsers = function (req, res) {
+    dnaUsersModel.create({
+        fullName: req.body.fullName,
+        city: req.body.city,
+        phone: req.body.phone,
+        numOfGames: req.body.numOfGames,
+        timeSpent: req.body.timeSpent,
+
+    },
+        function (err, user) {
+            if (err) {
+                return res.status(500).send("There was a problem registering the user. err: " + err);
+            }
+            res.status(200).send({
+                IsOk: true,
+                Results: user
+            });
+        });
+} 

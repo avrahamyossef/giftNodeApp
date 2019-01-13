@@ -42,4 +42,7 @@ module.exports = function (app) {
     app.get('/file/all', fileController.listUrlFiles);
     app.get('/file/:filename', fileController.downloadFile);
 
+    //dna club api
+    app.post('/auth/dnaRegisterUser', Auth.registerDnaUsers);
+
 };  
