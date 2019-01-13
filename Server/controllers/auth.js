@@ -135,6 +135,7 @@ exports.registerDnaUsers = function (req, res) {
         city: req.body.city,
         phone: req.body.phone,
         numOfGames: req.body.numOfGames,
+        answers: req.body.answers,
         timeSpent: req.body.timeSpent,
 
     },
