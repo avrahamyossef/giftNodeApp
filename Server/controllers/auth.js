@@ -97,7 +97,7 @@ exports.checkIfUserExist = function (req, res) {
 
         res.status(200).send({
             IsOk: true,
-            IsUserExist : true
+            IsUserExist: true
         });
     });
 }
@@ -148,4 +148,29 @@ exports.registerDnaUsers = function (req, res) {
                 Results: user
             });
         });
-} 
+}
+
+exports.updateUserResults = function (req, res) {
+    dnaUsersModel.update({ _id: req.body._id }, {
+        "numOfGames": req.body.numOfGames,
+        "answers": req.body.answers,
+        "timeSpent": req.body.timeSpent
+    }).exec(function (err, response) {
+        if (err) {
+            return res.status(500).send({
+                IsOk: false,
+                errorMessage: 'Error on the server.'
+            });
+        }
+        if (!response) {
+            return res.status(404).send({
+                IsOk: false,
+                errorMessage: 'No user found.'
+            });
+        }
+        res.status(200).send({
+            IsOk: true,
+            Results: response,
+        });
+    });
+}

@@ -44,5 +44,5 @@ module.exports = function (app) {
 
     //dna club api
     app.post('/auth/dnaRegisterUser', Auth.registerDnaUsers);
-
+    app.post('/auth/updateUserResults', Auth.updateUserResults);
 };  
