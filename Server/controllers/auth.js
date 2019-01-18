@@ -174,3 +174,23 @@ exports.updateUserResults = function (req, res) {
         });
     });
 }
+
+exports.getQuizResults = function (req, res) {
+    dnaUsersModel.find()
+        .select('-password -__v')
+        .exec(function (err, users) {
+            if (err || users === null) {
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'users not found',
+                    error: err
+                });
+            }
+            else {
+                res.status(200).json({
+                    IsOk: true,
+                    Results: users,
+                });
+            }
+        });
+};
