@@ -12,4 +12,4 @@ const dnaUsersModel = new Schema({
     timeSpent: { type: String, required: true }
 });
 
-module.exports = mongoose.model('dna_users', dnaUsersModel);
+module.exports = mongoose.model('dna_users_tow', dnaUsersModel);
