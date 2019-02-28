@@ -9,7 +9,9 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config');
 var dnaUsersModel = require('../models/dnaUsersModel');
+var blackSummerAppUsers = require("../models/blackSummerAppUsers");
 
+//******************* regaloApp apis **********************/
 
 exports.signup = function (req, res) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
@@ -128,6 +130,106 @@ exports.signupProvider = function (req, res) {
         });
 };
 
+//******************* dna & blackFashion clubs apis **********************/
+
+exports.signupForBlackSummer = function (req, res) {
+    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+
+    blackSummerAppUsers.create({
+        password: hashedPassword,
+        username: req.body.username,
+        phone: req.body.phone,
+        birthDay: req.body.birthDay,
+        city: req.body.city,
+        gender: req.body.gender,
+    },
+        function (err, user) {
+            if (err) {
+                return res.status(500).send("There was a problem registering the user. err: " + err);
+            }
+            // create a token
+            var token = jwt.sign({ id: user._id }, config.TOKEN_SECRET, {
+                expiresIn: 86400 // expires in 24 hours
+            });
+            res.status(200).send({
+                auth: true,
+                token: token,
+                currentUser: {
+                    id: user._id,
+                    username: user.username,
+                    phone: user.phone,
+                    birthDay: user.birthDay,
+                    city: user.city,
+                    gender: user.gender,
+                }
+            });
+        });
+};
+
+exports.loginForBlackSummer = function (req, res) {
+    blackSummerAppUsers.findOne({ phone: req.body.phone.toLowerCase() }, function (err, user) {
+
+        if (err) {
+            return res.status(500).send({
+                IsOk: false,
+                errorMessage: 'Error on the server.'
+            });
+        }
+        if (!user) {
+            return res.status(404).send({
+                IsOk: false,
+                errorMessage: 'No user found.'
+            });
+        }
+
+        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        if (!passwordIsValid) {
+            return res.status(401).send({
+                IsOk: false,
+                token: null
+            });
+        }
+
+        var token = jwt.sign({ id: user._id }, config.TOKEN_SECRET, {
+            expiresIn: 86400 // expires in 24 hours
+        });
+        res.status(200).send({
+            IsOk: true,
+            token: token,
+            currentUser: {
+                id: user._id,
+                userName: user.username,
+                email: user.email,
+            }
+        });
+    });
+};
+
+exports.checkIfUserExistForBlackSummer = function (req, res) {
+
+    blackSummerAppUsers.findOne({ "phone": req.body.phone }).exec(function (err, response) {
+        if (err) {
+            return res.status(500).send({
+                IsOk: false,
+                IsExist: false,
+                errorMessage: 'Error on the server.'
+            });
+        }
+        if (!response) {
+            return res.status(200).send({
+                IsOk: true,
+                IsUserExist: false
+            });
+        }
+
+        res.status(200).send({
+            IsOk: true,
+            IsUserExist: true
+        });
+    });
+}
+
+//******************* dna & blackFashion clubs apis **********************/
 
 exports.registerDnaUsers = function (req, res) {
     dnaUsersModel.create({

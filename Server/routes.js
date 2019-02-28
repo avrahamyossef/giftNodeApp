@@ -32,7 +32,6 @@ module.exports = function (app) {
     app.post('/product/getProductById', Products.getProductById);
     app.post('/product/updateImages', Products.updateProductImages);
 
-
     //.6 Application Routes - with Authenticat
     app.post('/product/create', ensureAuthenticated, Products.create);
 
@@ -46,4 +45,9 @@ module.exports = function (app) {
     app.post('/auth/dnaRegisterUser', Auth.registerDnaUsers);
     app.post('/auth/updateUserResults', Auth.updateUserResults);
     app.get('/auth/getQuizResults', Auth.getQuizResults);
+
+    //blackSummerApp api
+    app.post('/authBlackSummer/login', Auth.loginForBlackSummer);
+    app.post('/authBlackSummer/signup', Auth.signupForBlackSummer);
+    app.post('/authBlackSummer/checkIfUserExist', Auth.checkIfUserExistForBlackSummer);
 };  
