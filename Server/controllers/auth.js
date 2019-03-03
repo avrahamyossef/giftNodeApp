@@ -136,7 +136,7 @@ exports.signupForBlackSummer = function (req, res) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
     blackSummerAppUsers.create({
-        password: hashedPassword,
+        //password: hashedPassword,
         username: req.body.username,
         phone: req.body.phone,
         birthDay: req.body.birthDay,
@@ -182,13 +182,13 @@ exports.loginForBlackSummer = function (req, res) {
             });
         }
 
-        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-        if (!passwordIsValid) {
-            return res.status(401).send({
-                IsOk: false,
-                token: null
-            });
-        }
+        // var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        // if (!passwordIsValid) {
+        //     return res.status(401).send({
+        //         IsOk: false,
+        //         token: null
+        //     });
+        // }
 
         var token = jwt.sign({ id: user._id }, config.TOKEN_SECRET, {
             expiresIn: 86400 // expires in 24 hours
@@ -196,11 +196,7 @@ exports.loginForBlackSummer = function (req, res) {
         res.status(200).send({
             IsOk: true,
             token: token,
-            currentUser: {
-                id: user._id,
-                userName: user.username,
-                email: user.email,
-            }
+            currentUser: user
         });
     });
 };
