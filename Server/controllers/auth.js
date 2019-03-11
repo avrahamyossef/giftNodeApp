@@ -233,6 +233,9 @@ exports.registerToBusRequest = function (req, res) {
         station: req.body.station,
         city: req.body.city,
         manager: req.body.manager,
+        userName: req.body.userName,
+        phoneNumber: req.body.phoneNumber,
+        createdDate: req.body.createdDate
     },
         function (err, results) {
             if (err) {
