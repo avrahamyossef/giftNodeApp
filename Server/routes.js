@@ -50,4 +50,7 @@ module.exports = function (app) {
     app.post('/authBlackSummer/login', Auth.loginForBlackSummer);
     app.post('/authBlackSummer/signup', Auth.signupForBlackSummer);
     app.post('/authBlackSummer/checkIfUserExist', Auth.checkIfUserExistForBlackSummer);
+
+    app.post('/registerToBusRequest', Auth.registerToBusRequest);
+    app.post('/saveTableRequest', Auth.saveTableRequest);
 };  

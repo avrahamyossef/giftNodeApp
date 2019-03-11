@@ -10,6 +10,8 @@ var bcrypt = require('bcryptjs');
 var config = require('../config');
 var dnaUsersModel = require('../models/dnaUsersModel');
 var blackSummerAppUsers = require("../models/blackSummerAppUsers");
+var blackSummerBusList = require("../models/blackSummerBusList");
+var blackSummerTable = require("../models/blackSummerTable");
 
 //******************* regaloApp apis **********************/
 
@@ -130,7 +132,7 @@ exports.signupProvider = function (req, res) {
         });
 };
 
-//******************* dna & blackFashion clubs apis **********************/
+//******************* blackSummer apis **********************/
 
 exports.signupForBlackSummer = function (req, res) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
@@ -224,6 +226,42 @@ exports.checkIfUserExistForBlackSummer = function (req, res) {
         });
     });
 }
+
+exports.registerToBusRequest = function (req, res) {
+
+    blackSummerBusList.create({
+        station: req.body.station,
+        city: req.body.city,
+        manager: req.body.manager,
+    },
+        function (err, results) {
+            if (err) {
+                return res.status(500).send("There was a problem registering the user. err: " + err);
+            }
+            res.status(200).send({
+                IsOk: true,
+                Results: results
+            });
+        });
+};
+
+exports.saveTableRequest = function (req, res) {
+
+    blackSummerTable.create({
+        date: req.body.date,
+        fullName: req.body.fullName,
+        phoneNumber: req.body.phoneNumber,
+    },
+        function (err, results) {
+            if (err) {
+                return res.status(500).send("There was a problem registering the user. err: " + err);
+            }
+            res.status(200).send({
+                IsOk: true,
+                Results: results
+            });
+        });
+};
 
 //******************* dna & blackFashion clubs apis **********************/
 
