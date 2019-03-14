@@ -408,7 +408,7 @@ exports.saveNotification = function (req, res) {
 
 exports.checkIfNotificationDetailsExist = function (req, res) {
 
-    pushNotificationUser.findOne({ "id": req.body.id.toLowerCase() }).exec(function (err, response) {
+    pushNotificationUser.findOne({ "userId": req.body.userId.toLowerCase() }).exec(function (err, response) {
         if (err) {
             return res.status(500).send({
                 IsOk: false,
