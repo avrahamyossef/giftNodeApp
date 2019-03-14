@@ -54,5 +54,6 @@ module.exports = function (app) {
     app.post('/registerToBusRequest', Auth.registerToBusRequest);
     app.post('/saveTableRequest', Auth.saveTableRequest);
     app.post('/auth/newsletter', Auth.sendNewsletter);
+    app.post('/saveNotification', Auth.saveNotification);
 
 };  
