@@ -346,7 +346,7 @@ exports.getQuizResults = function (req, res) {
 
 
 /**************************** pwa push notification ***************************** */
-export function sendNewsletter(req, res) {
+exports.sendNewsletter = function(req, res) {
 
     const allSubscriptions = //... get subscriptions from database 
         [
@@ -386,4 +386,4 @@ export function sendNewsletter(req, res) {
             console.error("Error sending notification, reason: ", err);
             res.sendStatus(500);
         });
-}
+};
