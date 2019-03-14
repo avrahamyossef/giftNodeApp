@@ -364,9 +364,9 @@ exports.sendNewsletter = function(req, res) {
 
     const notificationPayload = {
         notification: {
-            title: "Black Summer",
-            body: "Newsletter from serve Available!",
-            icon: "assets/main-page-logo-small-hat.png",
+            title: req.body.title,
+            body: req.body.body,
+            icon: "https://www.blacksummer.xyz/assets/images/logo.png",
             vibrate: [100, 50, 100],
             data: {
                 dateOfArrival: Date.now(),
@@ -374,7 +374,7 @@ exports.sendNewsletter = function(req, res) {
             },
             actions: [{
                 action: "explore",
-                title: "Go to the site"
+                title: "כנס לאפליקציה"
             }]
         }
     };
