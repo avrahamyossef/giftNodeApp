@@ -392,7 +392,7 @@ exports.sendNewsletter = function (req, res) {
 
 exports.saveNotification = function (req, res) {
     pushNotificationUser.create({
-        id: req.body.id,
+        userId: req.body.userId,
         details: req.body.details,
     },
         function (err, user) {
