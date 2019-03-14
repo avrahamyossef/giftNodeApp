@@ -12,7 +12,17 @@ var dnaUsersModel = require('../models/dnaUsersModel');
 var blackSummerAppUsers = require("../models/blackSummerAppUsers");
 var blackSummerBusList = require("../models/blackSummerBusList");
 var blackSummerTable = require("../models/blackSummerTable");
+const webpush = require('web-push');
+const vapidKeys = {
+    publicKey: "BHSYFV2YGf2xMb7SUkVK2ec1nUo2694tYZtxMIzuYx6HzdIpHCtBCN5g0SZ82Pjsxu	VE1yolLyjjlGPJ29q1QUw",
+    privateKey: "Dovo_1uvtOPen2jVdgf6GIMnY9nWKg7EqNy01IGGFvg"
+};
 
+webpush.setVapidDetails(
+    'mailto:avrahamyossef3@gmail.com',
+    vapidKeys.publicKey,
+    vapidKeys.privateKey
+);
 //******************* regaloApp apis **********************/
 
 exports.signup = function (req, res) {
@@ -333,3 +343,47 @@ exports.getQuizResults = function (req, res) {
             }
         });
 };
+
+
+/**************************** pwa push notification ***************************** */
+export function sendNewsletter(req, res) {
+
+    const allSubscriptions = //... get subscriptions from database 
+        [
+            {
+                "endpoint": "https://fcm.googleapis.com/fcm/send/eOAWWBcNibI:APA91bGBLjV85yqesfEboxXwlalMxauZaITtbkkBogxVJgqkApQ-UvMJup66aikqs5WTjWdC_IHQBw4tUHBsd9740DIbpW-W2ZIcMuq8s61orJCoMZPjXeiEvdS7aApNfTa1wpNcHZ0p",
+                "expirationTime": null,
+                "keys": {
+                    "p256dh": "BCDXttN_Xuc-BgXxAZazvEf8lFfhtYEfZb9HfyTOkKcJA_HepN618tnn-qGoiy3bNFKc_nRs2ryj1ZTjRADQcNE",
+                    "auth": "myJPSolxytzkPhVgpk-auQ"
+                }
+            }
+        ];
+
+    console.log('Total subscriptions', allSubscriptions.length);
+
+    const notificationPayload = {
+        notification: {
+            title: "Black Summer",
+            body: "Newsletter from serve Available!",
+            icon: "assets/main-page-logo-small-hat.png",
+            vibrate: [100, 50, 100],
+            data: {
+                dateOfArrival: Date.now(),
+                primaryKey: 1
+            },
+            actions: [{
+                action: "explore",
+                title: "Go to the site"
+            }]
+        }
+    };
+
+    Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
+        sub, JSON.stringify(notificationPayload))))
+        .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
+        .catch(err => {
+            console.error("Error sending notification, reason: ", err);
+            res.sendStatus(500);
+        });
+}
