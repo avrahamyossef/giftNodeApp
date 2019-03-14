@@ -348,46 +348,49 @@ exports.getQuizResults = function (req, res) {
 
 /**************************** pwa push notification ***************************** */
 exports.sendNewsletter = function (req, res) {
+    console.log('SendNewsletter Api Call');
 
-    const allSubscriptions = //... get subscriptions from database 
-        [
-            {
-                "endpoint": "https://fcm.googleapis.com/fcm/send/eOAWWBcNibI:APA91bGBLjV85yqesfEboxXwlalMxauZaITtbkkBogxVJgqkApQ-UvMJup66aikqs5WTjWdC_IHQBw4tUHBsd9740DIbpW-W2ZIcMuq8s61orJCoMZPjXeiEvdS7aApNfTa1wpNcHZ0p",
-                "expirationTime": null,
-                "keys": {
-                    "p256dh": "BCDXttN_Xuc-BgXxAZazvEf8lFfhtYEfZb9HfyTOkKcJA_HepN618tnn-qGoiy3bNFKc_nRs2ryj1ZTjRADQcNE",
-                    "auth": "myJPSolxytzkPhVgpk-auQ"
-                }
+    getNotificationFromDb((allSubscriptions) => {
+        console.log('GetNotificationFromDb function response :', allSubscriptions);
+
+        const notificationPayload = {
+            notification: {
+                title: req.body.title,
+                body: req.body.body,
+                icon: "https://www.blacksummer.xyz/assets/images/logo.png",
+                vibrate: [100, 50, 100],
+                data: {
+                    dateOfArrival: Date.now(),
+                    primaryKey: 1,
+                    url: 'https://www.blacksummer.xyz'
+                },
+                actions: [{
+                    action: "explore",
+                    title: "כנס לאפליקציה"
+                }]
             }
-        ];
+        };
+        Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
+            sub, JSON.stringify(notificationPayload))))
+            .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
+            .catch(err => {
+                console.error("Error sending notification, reason: ", err);
+                res.sendStatus(500);
+            });
+    });
 
-    console.log('Total subscriptions', allSubscriptions.length);
+    //... get subscriptions from database 
+    // [
+    //     {
+    //         "endpoint": "https://fcm.googleapis.com/fcm/send/eOAWWBcNibI:APA91bGBLjV85yqesfEboxXwlalMxauZaITtbkkBogxVJgqkApQ-UvMJup66aikqs5WTjWdC_IHQBw4tUHBsd9740DIbpW-W2ZIcMuq8s61orJCoMZPjXeiEvdS7aApNfTa1wpNcHZ0p",
+    //         "expirationTime": null,
+    //         "keys": {
+    //             "p256dh": "BCDXttN_Xuc-BgXxAZazvEf8lFfhtYEfZb9HfyTOkKcJA_HepN618tnn-qGoiy3bNFKc_nRs2ryj1ZTjRADQcNE",
+    //             "auth": "myJPSolxytzkPhVgpk-auQ"
+    //         }
+    //     }
+    // ];
 
-    const notificationPayload = {
-        notification: {
-            title: req.body.title,
-            body: req.body.body,
-            icon: "https://www.blacksummer.xyz/assets/images/logo.png",
-            vibrate: [100, 50, 100],
-            data: {
-                dateOfArrival: Date.now(),
-                primaryKey: 1,
-                url: 'https://www.blacksummer.xyz'
-            },
-            actions: [{
-                action: "explore",
-                title: "כנס לאפליקציה"
-            }]
-        }
-    };
-
-    Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
-        sub, JSON.stringify(notificationPayload))))
-        .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
-        .catch(err => {
-            console.error("Error sending notification, reason: ", err);
-            res.sendStatus(500);
-        });
 };
 
 exports.saveNotification = function (req, res) {
@@ -428,4 +431,26 @@ exports.checkIfNotificationDetailsExist = function (req, res) {
             IsExist: true
         });
     });
+}
+
+function getNotificationFromDb(callback) {
+    console.log('Call pushNotificationUser function');
+
+    pushNotificationUser.find()
+        .exec(function (err, notifications) {
+            if (err || notifications === null) {
+                console.log('Error On Notifications response from pushNotificationUser function :', notifications);
+                return callback([]);
+            }
+            else {
+                // console.log('Success Notifications response from pushNotificationUser function', JSON.stringify(notifications));
+                var array = [];
+                notifications.forEach(element => {
+                    array.push(element._doc.details);
+                });
+                console.log("Details after parse json  : " + array)
+                return callback(array);
+            }
+
+        });
 }
