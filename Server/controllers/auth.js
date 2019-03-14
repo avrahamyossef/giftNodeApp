@@ -12,6 +12,7 @@ var dnaUsersModel = require('../models/dnaUsersModel');
 var blackSummerAppUsers = require("../models/blackSummerAppUsers");
 var blackSummerBusList = require("../models/blackSummerBusList");
 var blackSummerTable = require("../models/blackSummerTable");
+var pushNotificationUser = require("../models/pushNotificationUser");
 const webpush = require('web-push');
 const vapidKeys = {
     publicKey: "BHSYFV2YGf2xMb7SUkVK2ec1nUo2694tYZtxMIzuYx6HzdIpHCtBCN5g0SZ82Pjsxu	VE1yolLyjjlGPJ29q1QUw",
@@ -346,7 +347,7 @@ exports.getQuizResults = function (req, res) {
 
 
 /**************************** pwa push notification ***************************** */
-exports.sendNewsletter = function(req, res) {
+exports.sendNewsletter = function (req, res) {
 
     const allSubscriptions = //... get subscriptions from database 
         [
@@ -388,3 +389,43 @@ exports.sendNewsletter = function(req, res) {
             res.sendStatus(500);
         });
 };
+
+exports.saveNotification = function (req, res) {
+    pushNotificationUser.create({
+        id: req.body.id,
+        details: req.body.details,
+    },
+        function (err, user) {
+            if (err) {
+                return res.status(500).send("There was a problem save notification user details. err: " + err);
+            }
+            res.status(200).send({
+                IsOk: true,
+                Results: user
+            });
+        });
+}
+
+exports.checkIfNotificationDetailsExist = function (req, res) {
+
+    pushNotificationUser.findOne({ "id": req.body.id.toLowerCase() }).exec(function (err, response) {
+        if (err) {
+            return res.status(500).send({
+                IsOk: false,
+                IsExist: false,
+                errorMessage: 'Error on the server.'
+            });
+        }
+        if (!response) {
+            return res.status(200).send({
+                IsOk: true,
+                IsExist: false
+            });
+        }
+
+        res.status(200).send({
+            IsOk: true,
+            IsExist: true
+        });
+    });
+}
