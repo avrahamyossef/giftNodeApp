@@ -370,7 +370,8 @@ exports.sendNewsletter = function(req, res) {
             vibrate: [100, 50, 100],
             data: {
                 dateOfArrival: Date.now(),
-                primaryKey: 1
+                primaryKey: 1,
+                url: 'https://www.blacksummer.xyz'
             },
             actions: [{
                 action: "explore",
