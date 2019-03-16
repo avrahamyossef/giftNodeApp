@@ -364,10 +364,10 @@ exports.sendNewsletter = function (req, res) {
                     primaryKey: 1,
                     url: 'https://www.blacksummer.xyz'
                 },
-                actions: [{
-                    action: "explore",
-                    title: "כנס לאפליקציה"
-                }]
+                // actions: [{
+                //     action: "explore",
+                //     title: "כנס לאפליקציה"
+                // }]
             }
         };
         Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
@@ -394,42 +394,63 @@ exports.sendNewsletter = function (req, res) {
 };
 
 exports.saveNotification = function (req, res) {
-    pushNotificationUser.create({
-        userId: req.body.userId,
-        details: req.body.details,
-    },
-        function (err, user) {
-            if (err) {
-                return res.status(500).send("There was a problem save notification user details. err: " + err);
-            }
-            res.status(200).send({
-                IsOk: true,
-                Results: user
+
+    checkIfNotificationDetailsExist((isNotificationExist) => {
+
+        if (isNotificationExist) //update
+        {
+            dnaUsersModel.update({ _id: req.body.userId }, {
+                "details": req.body.details,
+            }).exec(function (err, response) {
+                if (err) {
+                    return res.status(500).send({
+                        IsOk: false,
+                        errorMessage: 'Error on the server.'
+                    });
+                }
+                if (!response) {
+                    return res.status(404).send({
+                        IsOk: false,
+                        errorMessage: 'No Notification found.'
+                    });
+                }
+                res.status(200).send({
+                    IsOk: true,
+                    Results: response,
+                });
             });
-        });
+        }
+        else //save new
+        {
+            pushNotificationUser.create({
+                userId: req.body.userId,
+                details: req.body.details,
+            },
+                function (err, user) {
+                    if (err) {
+                        return res.status(500).send("There was a problem save notification user details. err: " + err);
+                    }
+                    res.status(200).send({
+                        IsOk: true,
+                        Results: user
+                    });
+                });
+        }
+    }, req.body.userId);
+
+
 }
 
-exports.checkIfNotificationDetailsExist = function (req, res) {
+function checkIfNotificationDetailsExist(callback, userId) {
 
-    pushNotificationUser.findOne({ "userId": req.body.userId.toLowerCase() }).exec(function (err, response) {
+    pushNotificationUser.findOne({ "userId": userId }).exec(function (err, response) {
         if (err) {
-            return res.status(500).send({
-                IsOk: false,
-                IsExist: false,
-                errorMessage: 'Error on the server.'
-            });
+            return callback(false);
         }
         if (!response) {
-            return res.status(200).send({
-                IsOk: true,
-                IsExist: false
-            });
+            return callback(false);
         }
-
-        res.status(200).send({
-            IsOk: true,
-            IsExist: true
-        });
+        return callback(true);
     });
 }
 
