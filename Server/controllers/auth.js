@@ -155,6 +155,7 @@ exports.signupForBlackSummer = function (req, res) {
         birthDay: req.body.birthDay,
         city: req.body.city,
         gender: req.body.gender,
+        createdDate: Date.now()
     },
         function (err, user) {
             if (err) {
@@ -265,6 +266,7 @@ exports.saveTableRequest = function (req, res) {
         date: req.body.date,
         fullName: req.body.fullName,
         phoneNumber: req.body.phoneNumber,
+        createdDate: Date.now()
     },
         function (err, results) {
             if (err) {
@@ -287,7 +289,7 @@ exports.registerDnaUsers = function (req, res) {
         numOfGames: req.body.numOfGames,
         answers: req.body.answers,
         timeSpent: req.body.timeSpent,
-
+        createdDate: Date.now()
     },
         function (err, user) {
             if (err) {

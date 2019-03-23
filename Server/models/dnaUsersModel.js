@@ -9,7 +9,8 @@ const dnaUsersModel = new Schema({
     phone: { type: String, required: true, index: { unique: true } },
     numOfGames: { type: Number, required: true },
     answers: { type: Number, required: true },
-    timeSpent: { type: String, required: true }
+    timeSpent: { type: String, required: true },
+    createdDate: { type: Date, require: true}
 });
 
 module.exports = mongoose.model('dna_users_tow', dnaUsersModel);
