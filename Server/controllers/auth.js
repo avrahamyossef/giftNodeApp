@@ -397,33 +397,33 @@ exports.sendNewsletter = function (req, res) {
 
 exports.saveNotification = function (req, res) {
 
-    checkIfNotificationDetailsExist((isNotificationExist) => {
+    // checkIfNotificationDetailsExist((isNotificationExist) => {
 
-        if (isNotificationExist) //update
-        {
-            dnaUsersModel.update({ _id: req.body.userId }, {
-                "details": req.body.details,
-            }).exec(function (err, response) {
-                if (err) {
-                    return res.status(500).send({
-                        IsOk: false,
-                        errorMessage: 'Error on the server.'
-                    });
-                }
-                if (!response) {
-                    return res.status(404).send({
-                        IsOk: false,
-                        errorMessage: 'No Notification found.'
-                    });
-                }
-                res.status(200).send({
-                    IsOk: true,
-                    Results: response,
-                });
-            });
-        }
-        else //save new
-        {
+    //     if (isNotificationExist) //update
+    //     {
+    //         dnaUsersModel.update({ _id: req.body.userId }, {
+    //             "details": req.body.details,
+    //         }).exec(function (err, response) {
+    //             if (err) {
+    //                 return res.status(500).send({
+    //                     IsOk: false,
+    //                     errorMessage: 'Error on the server.'
+    //                 });
+    //             }
+    //             if (!response) {
+    //                 return res.status(404).send({
+    //                     IsOk: false,
+    //                     errorMessage: 'No Notification found.'
+    //                 });
+    //             }
+    //             res.status(200).send({
+    //                 IsOk: true,
+    //                 Results: response,
+    //             });
+    //         });
+    //     }
+      //  else //save new
+      //  {
             pushNotificationUser.create({
                 userId: req.body.userId,
                 details: req.body.details,
@@ -437,8 +437,8 @@ exports.saveNotification = function (req, res) {
                         Results: user
                     });
                 });
-        }
-    }, req.body.userId);
+       // }
+   // }, req.body.userId);
 
 
 }
@@ -476,4 +476,9 @@ function getNotificationFromDb(callback) {
             }
 
         });
+}
+
+exports.sendEmail = function (req, res) {
+
+
 }

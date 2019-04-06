@@ -5,6 +5,7 @@ var Relationship = require('./controllers/relationships.js');
 var Interests = require('./controllers/interests.js');
 var Products = require('./controllers/products.js');
 var Supplier = require('./controllers/supplier.js');
+var nodeMailerWithTemp = require('./controllers/nodeMailerWithTemp');
 var upload = require('./multer.config');
 var fileController = require('./controllers/file.controller.js');
 
@@ -55,5 +56,7 @@ module.exports = function (app) {
     app.post('/saveTableRequest', Auth.saveTableRequest);
     app.post('/auth/newsletter', Auth.sendNewsletter);
     app.post('/saveNotification', Auth.saveNotification);
+    app.post('/saveNotification', nodeMailerWithTemp.sendEmail);
+
 
 };  
