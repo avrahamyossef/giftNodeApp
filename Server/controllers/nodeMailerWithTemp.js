@@ -17,8 +17,8 @@ var smtpConfig = {
     }
 };
 
-var mailer = nodemailer.createTransport(smtpConfig);
-
+//var mailer = nodemailer.createTransport(smtpConfig);
+var mailer = nodemailer.createTransport('smtps://avrahamyossef3%40gmail.com:Ay748596@smtp.gmail.com');
 
 const handlebarOptions = {
     viewEngine: {
