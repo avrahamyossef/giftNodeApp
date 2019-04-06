@@ -6,7 +6,7 @@ var path = require('path');
 
 var smtpConfig = {
     host: 'smtp.gmail.com',
-    port: 587,
+    port: 25,
     secure: false, // use SSL
     auth: {
         user: 'avrahamyossef3@gmail.com',
