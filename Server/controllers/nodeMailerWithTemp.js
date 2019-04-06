@@ -5,11 +5,15 @@ var nodemailer = require('nodemailer');
 var path = require('path');
 
 var smtpConfig = {
-    port: 443,
-    service: 'Gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // use SSL
     auth: {
         user: 'avrahamyossef3@gmail.com',
         pass: 'Ay748596'
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 };
 
@@ -18,14 +22,14 @@ var mailer = nodemailer.createTransport(smtpConfig);
 
 const handlebarOptions = {
     viewEngine: {
-      extName: '.hbs',
-      partialsDir: 'views/partials',
-      layoutsDir: 'views/partials',
-      defaultLayout: 'html.hbs',
+        extName: '.hbs',
+        partialsDir: 'views/partials',
+        layoutsDir: 'views/partials',
+        defaultLayout: 'html.hbs',
     },
     viewPath: 'views/partials',
     extName: '.hbs',
-  };
+};
 
 mailer.use('compile', hbs(handlebarOptions));
 
