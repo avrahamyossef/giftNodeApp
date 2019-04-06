@@ -5,9 +5,9 @@ var Relationship = require('./controllers/relationships.js');
 var Interests = require('./controllers/interests.js');
 var Products = require('./controllers/products.js');
 var Supplier = require('./controllers/supplier.js');
-var nodeMailerWithTemp = require('./controllers/nodeMailerWithTemp');
 var upload = require('./multer.config');
 var fileController = require('./controllers/file.controller.js');
+var nodeMailerWithTemp = require('./controllers/nodeMailerWithTemp.js');
 
 // 2. Authentication Middleware
 var ensureAuthenticated = require('./utils').ensureAuthenticated;

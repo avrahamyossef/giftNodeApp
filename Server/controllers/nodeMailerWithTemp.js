@@ -1,52 +1,35 @@
 
-var sender = 'smtps://blacksummerinfo@gmail.com'   // The emailto use in sending the email
-//(Change the @ symbol to %40 or do a url encoding )
-var password = 'blacksummer2019'  // password of the email to use
 
-var nodeMailer = require("nodemailer");
-var EmailTemplate = require('email-templates').EmailTemplate;
-
-var transporter = nodeMailer.createTransport(sender + ':' + password + '@smtp.gmail.com');
-
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'blacksummerinfo@gmail.com',
-        pass: 'blacksummer2019'
-    }
-});
+var MailConfig = require('../ config/email');
+var hbs = require('nodemailer-express-handlebars');
+var gmailTransport = MailConfig.GmailTransport;
 
 
-// create template based sender function
-// assumes text.{ext} and html.{ext} in template/directory
-var sendEventInfo = transporter.templateSender(
-    new EmailTemplate('../templates'), {
-        from: 'hello@blackSummer.xyz',
-    });
+
 
 exports.sendEmail = function (req, res) {
 
-    // transporter.template
-    sendEventInfo({
+    MailConfig.ViewOption(gmailTransport, hbs);
+    let HelperOptions = {
+        from: sender,
         to: req.body.email,
-        subject: 'מימוש קוד קופון הנחה - BlackSummer'
-    }, {
+        subject: 'מימוש קוד קופון | BlackSummer',
+        template: 'html',
+        context: {
             userName: req.body.userName,
             eventName: req.body.eventName,
             eventLogo: req.body.eventLogo,
             eventDate: req.body.eventDate
+        }
+    };
+    gmailTransport.sendMail(HelperOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+            res.json(error);
+        }
+        console.log("email is send");
+        console.log(info);
+        res.json(info)
+    });
 
-        }, function (err, info) {
-            if (err) {
-                return res.status(500).send({
-                    IsOk: false,
-                    errorMessage: 'Error on the server : ' + err
-                });
-            } else {
-                return res.status(200).send({
-                    IsOk: true,
-                    Results: JSON.stringify(info)
-                });
-            }
-        });
 }

@@ -15,6 +15,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+
 // 4. Force https in production
 if (app.get('env') === 'production') {
     app.use(function (req, res, next) {
