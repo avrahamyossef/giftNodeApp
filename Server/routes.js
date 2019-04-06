@@ -56,7 +56,7 @@ module.exports = function (app) {
     app.post('/saveTableRequest', Auth.saveTableRequest);
     app.post('/auth/newsletter', Auth.sendNewsletter);
     app.post('/saveNotification', Auth.saveNotification);
-    app.post('/saveNotification', nodeMailerWithTemp.sendEmail);
+    app.post('/sendEmail', nodeMailerWithTemp.sendEmail);
 
 
 };  
