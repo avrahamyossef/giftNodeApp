@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var cors = require("cors");
 var logger = require('morgan');
+var path = require('path');
 
 // 2. Include Configuration
 var config = require('./config');
@@ -16,9 +17,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.set('view engine', 'ejs');
+//config email settings
+var handlebars = require('express-handlebars').create({
+    layoutsDir: path.join(__dirname, "views/partials"),
+    partialsDir: path.join(__dirname, "views/partials"),
+    defaultLayout: 'html',
+    extname: 'hbs'
+});
+
+app.engine('hbs', handlebars.engine);
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, "views/partials"));
+
+app.get('/', function (req, res) {
+    res.render('html');
+});
+
 
 // 4. Force https in production
 if (app.get('env') === 'production') {
@@ -35,7 +49,7 @@ const option = {
     reconnectTries: 30000
 };
 mongoose.connect(config.MONGO_URI).then(() => {
-console.log("Connected to MongoDatabase");
+    console.log("Connected to MongoDatabase");
 }).catch((err) => {
     console.log("Not Connected to Database ERROR! ", err);
 });
