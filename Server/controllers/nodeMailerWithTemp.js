@@ -5,8 +5,8 @@ var nodemailer = require('nodemailer');
 var path = require('path');
 
 var smtpConfig = {
-    // host: 'smtp.gmail.com',
-    // port: 465,
+    host: 'smtp.gmail.com',
+    port: 25,
     service: 'Gmail',
     auth: {
         user: 'avrahamyossef3@gmail.com',
