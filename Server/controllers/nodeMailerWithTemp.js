@@ -4,14 +4,11 @@ var MailConfig = require('../ config/email');
 var hbs = require('nodemailer-express-handlebars');
 var gmailTransport = MailConfig.GmailTransport;
 
-
-
-
 exports.sendEmail = function (req, res) {
 
     MailConfig.ViewOption(gmailTransport, hbs);
     let HelperOptions = {
-        from: sender,
+        from: '"BlackSummer" <blacksummerinfo@gmail.com>',
         to: req.body.email,
         subject: 'מימוש קוד קופון | BlackSummer',
         template: 'html',
