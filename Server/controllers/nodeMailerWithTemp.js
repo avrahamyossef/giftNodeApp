@@ -4,14 +4,17 @@ var hbs = require('nodemailer-express-handlebars');
 var nodemailer = require('nodemailer');
 var path = require('path');
 
-var mailer = nodemailer.createTransport({
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'gmail.com',
-    user_name: 'blacksummerinfo@gmail.com',
-    password: 'blacksummer2019',
-    authentication: 'plain'
-});
+var smtpConfig = {
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // use SSL
+    auth: {
+        user: 'avrahamyossef3@gmail.com',
+        pass: 'Ay748596'
+    }
+};
+
+var mailer = nodemailer.createTransport(smtpConfig);
 
 
 const handlebarOptions = {
