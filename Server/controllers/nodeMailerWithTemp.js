@@ -53,9 +53,9 @@ exports.sendEmail = function (req, res) {
                     errorMessage: 'Error on the server. error: ' + error
                 });
             }
-            res.status(200).json({
+            return res.status(200).json({
                 IsOk: true,
-                Results: res.json(info)
+                //Results: res.json(info)
             });
         });
 
