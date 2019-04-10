@@ -9,7 +9,8 @@ const userModel = new Schema({
     birthDay: { type: String, required: false },
     city: { type: String, required: false },
     gender: { type: String, required: false },
-    createdDate: { type: Date, require: true}
+    managerId: { type: String, required: false },
+    createdDate: { type: Date, require: true },
 });
 
 module.exports = mongoose.model('blackSummerUsers', userModel);

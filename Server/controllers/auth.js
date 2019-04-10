@@ -155,6 +155,7 @@ exports.signupForBlackSummer = function (req, res) {
         birthDay: req.body.birthDay,
         city: req.body.city,
         gender: req.body.gender,
+        managerId: req.body.managerId,
         createdDate: Date.now()
     },
         function (err, user) {
