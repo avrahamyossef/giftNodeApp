@@ -365,7 +365,7 @@ exports.sendNewsletter = function (req, res) {
                 data: {
                     dateOfArrival: Date.now(),
                     primaryKey: 1,
-                    url: 'https://www.blacksummer.xyz/events'
+                    url: 'https://www.blacksummer.xyz'
                 },
                 // actions: [{
                 //     action: "explore",
@@ -376,7 +376,7 @@ exports.sendNewsletter = function (req, res) {
         Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
             sub, JSON.stringify(notificationPayload))))
             .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
-            .catch(err => {
+            .catch((err) => {
                 console.error("Error sending notification, reason: ", err);
                 res.sendStatus(500);
             });
@@ -398,33 +398,33 @@ exports.sendNewsletter = function (req, res) {
 
 exports.saveNotification = function (req, res) {
 
-    checkIfNotificationDetailsExist((isNotificationExist) => {
+    // checkIfNotificationDetailsExist((isNotificationExist) => {
 
-        if (isNotificationExist) //update
-        {
-            dnaUsersModel.update({ _id: req.body.userId }, {
-                "details": req.body.details,
-            }).exec(function (err, response) {
-                if (err) {
-                    return res.status(500).send({
-                        IsOk: false,
-                        errorMessage: 'Error on the server.'
-                    });
-                }
-                if (!response) {
-                    return res.status(404).send({
-                        IsOk: false,
-                        errorMessage: 'No Notification found.'
-                    });
-                }
-                res.status(200).send({
-                    IsOk: true,
-                    Results: response,
-                });
-            });
-        }
-       else //save new
-       {
+    //     if (isNotificationExist) //update
+    //     {
+    //         dnaUsersModel.update({ _id: req.body.userId }, {
+    //             "details": req.body.details,
+    //         }).exec(function (err, response) {
+    //             if (err) {
+    //                 return res.status(500).send({
+    //                     IsOk: false,
+    //                     errorMessage: 'Error on the server.'
+    //                 });
+    //             }
+    //             if (!response) {
+    //                 return res.status(404).send({
+    //                     IsOk: false,
+    //                     errorMessage: 'No Notification found.'
+    //                 });
+    //             }
+    //             res.status(200).send({
+    //                 IsOk: true,
+    //                 Results: response,
+    //             });
+    //         });
+    //     }
+    //    else //save new
+    //    {
             pushNotificationUser.create({
                 userId: req.body.userId,
                 details: req.body.details,
@@ -438,8 +438,8 @@ exports.saveNotification = function (req, res) {
                         Results: user
                     });
                 });
-       }
-   }, req.body.userId);
+      // }
+  // }, req.body.userId);
 
 
 }
