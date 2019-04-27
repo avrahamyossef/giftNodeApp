@@ -24,6 +24,8 @@ webpush.setVapidDetails(
     vapidKeys.publicKey,
     vapidKeys.privateKey
 );
+
+
 //******************* regaloApp apis **********************/
 
 exports.signup = function (req, res) {
@@ -280,6 +282,66 @@ exports.saveTableRequest = function (req, res) {
         });
 };
 
+exports.getBlackSummerBusList = function (req, res) {
+    blackSummerBusList.find()
+        .select('-password -__v')
+        .exec(function (err, response) {
+            if (err || response === null) {
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'blackSummerBusList not found',
+                    error: err
+                });
+            }
+            else {
+                res.status(200).json({
+                    IsOk: true,
+                    Results: response
+                });
+            }
+        });
+};
+
+exports.getBlackSummerTableList = function (req, res) {
+    blackSummerTable.find()
+        .select('-password -__v')
+        .exec(function (err, response) {
+            if (err || response === null) {
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'blackSummerTable not found',
+                    error: err
+                });
+            }
+            else {
+                res.status(200).json({
+                    IsOk: true,
+                    Results: response
+                });
+            }
+        });
+};
+
+exports.getBlackSummerUsers = function (req, res) {
+    blackSummerAppUsers.find()
+        .select('-password -__v')
+        .exec(function (err, response) {
+            if (err || response === null) {
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'users not found',
+                    error: err
+                });
+            }
+            else {
+                res.status(200).json({
+                    IsOk: true,
+                    Results: response
+                });
+            }
+        });
+};
+
 //******************* dna & blackFashion clubs apis **********************/
 
 exports.registerDnaUsers = function (req, res) {
@@ -350,6 +412,7 @@ exports.getQuizResults = function (req, res) {
 
 
 /**************************** pwa push notification ***************************** */
+
 exports.sendNewsletter = function (req, res) {
     console.log('SendNewsletter Api Call');
 
@@ -425,21 +488,21 @@ exports.saveNotification = function (req, res) {
     //     }
     //    else //save new
     //    {
-            pushNotificationUser.create({
-                userId: req.body.userId,
-                details: req.body.details,
-            },
-                function (err, user) {
-                    if (err) {
-                        return res.status(500).send("There was a problem save notification user details. err: " + err);
-                    }
-                    res.status(200).send({
-                        IsOk: true,
-                        Results: user
-                    });
-                });
-      // }
-  // }, req.body.userId);
+    pushNotificationUser.create({
+        userId: req.body.userId,
+        details: req.body.details,
+    },
+        function (err, user) {
+            if (err) {
+                return res.status(500).send("There was a problem save notification user details. err: " + err);
+            }
+            res.status(200).send({
+                IsOk: true,
+                Results: user
+            });
+        });
+    // }
+    // }, req.body.userId);
 
 
 }
@@ -479,7 +542,9 @@ function getNotificationFromDb(callback) {
         });
 }
 
-exports.sendEmail = function (req, res) {
 
+/*************************** Send EMAIL *******************************************/
+
+exports.sendEmail = function (req, res) {
 
 }
