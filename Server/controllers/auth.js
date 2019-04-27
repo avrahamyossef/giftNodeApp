@@ -269,6 +269,8 @@ exports.saveTableRequest = function (req, res) {
         date: req.body.date,
         fullName: req.body.fullName,
         phoneNumber: req.body.phoneNumber,
+        userName: req.body.userName,
+        city: req.body.city,
         createdDate: Date.now()
     },
         function (err, results) {
