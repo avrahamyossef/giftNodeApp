@@ -10,6 +10,7 @@ const userModel = new Schema({
     city: { type: String, required: false },
     gender: { type: String, required: false },
     managerId: { type: String, required: false },
+    isSummerReggaeUser: { type: Boolean, required: false },
     createdDate: { type: Date, require: true },
 });
 

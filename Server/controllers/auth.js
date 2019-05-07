@@ -151,7 +151,7 @@ exports.signupForBlackSummer = function (req, res) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
     blackSummerAppUsers.create({
-        //password: hashedPassword,
+        isSummerReggaeUser: req.body.isSummerReggaeUser,
         username: req.body.username,
         phone: req.body.phone,
         birthDay: req.body.birthDay,
