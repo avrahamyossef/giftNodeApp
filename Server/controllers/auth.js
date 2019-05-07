@@ -12,6 +12,7 @@ var dnaUsersModel = require('../models/dnaUsersModel');
 var blackSummerAppUsers = require("../models/blackSummerAppUsers");
 var blackSummerBusList = require("../models/blackSummerBusList");
 var blackSummerTable = require("../models/blackSummerTable");
+var blackSummerRoutes = require("../models/blackSummerRouts");
 var pushNotificationUser = require("../models/pushNotificationUser");
 const webpush = require('web-push');
 const vapidKeys = {
@@ -332,6 +333,26 @@ exports.getBlackSummerUsers = function (req, res) {
                 res.status(404).json({
                     IsOk: false,
                     errorMessage: 'users not found',
+                    error: err
+                });
+            }
+            else {
+                res.status(200).json({
+                    IsOk: true,
+                    Results: response
+                });
+            }
+        });
+};
+
+exports.getBlackSummerRoutesList = function (req, res) {
+    blackSummerRoutes.find()
+        .select('-password -__v')
+        .exec(function (err, response) {
+            if (err || response === null) {
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'blackSummerRoutes not found',
                     error: err
                 });
             }
