@@ -13,6 +13,8 @@ var blackSummerAppUsers = require("../models/blackSummerAppUsers");
 var blackSummerBusList = require("../models/blackSummerBusList");
 var blackSummerTable = require("../models/blackSummerTable");
 var blackSummerRoutes = require("../models/blackSummerRouts");
+var blackSummerEvents = require("../models/blackSummerEvents");
+var blackSummerGalleries = require("../models/blackSummerGalleries");
 var pushNotificationUser = require("../models/pushNotificationUser");
 const webpush = require('web-push');
 const vapidKeys = {
@@ -353,6 +355,46 @@ exports.getBlackSummerRoutesList = function (req, res) {
                 res.status(404).json({
                     IsOk: false,
                     errorMessage: 'blackSummerRoutes not found',
+                    error: err
+                });
+            }
+            else {
+                res.status(200).json({
+                    IsOk: true,
+                    Results: response
+                });
+            }
+        });
+};
+
+exports.getBlackSummerEventsList = function (req, res) {
+    blackSummerEvents.find()
+        .select('-password -__v')
+        .exec(function (err, response) {
+            if (err || response === null) {
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'blackSummerEvents not found',
+                    error: err
+                });
+            }
+            else {
+                res.status(200).json({
+                    IsOk: true,
+                    Results: response
+                });
+            }
+        });
+};
+
+exports.getBlackSummerGalleriesList = function (req, res) {
+    blackSummerGalleries.find()
+        .select('-password -__v')
+        .exec(function (err, response) {
+            if (err || response === null) {
+                res.status(404).json({
+                    IsOk: false,
+                    errorMessage: 'blackSummerGalleries not found',
                     error: err
                 });
             }

@@ -55,7 +55,9 @@ module.exports = function (app) {
     app.get('/getBusList', Auth.getBlackSummerBusList);
     app.get('/getUsers', Auth.getBlackSummerUsers);
     app.get('/getRoutes', Auth.getBlackSummerRoutesList);
-    
+    app.get('/getEvents', Auth.getBlackSummerEventsList);
+    app.get('/getGalleries', Auth.getBlackSummerGalleriesList);
+
     app.post('/registerToBusRequest', Auth.registerToBusRequest);
     app.post('/saveTableRequest', Auth.saveTableRequest);
     app.post('/auth/newsletter', Auth.sendNewsletter);
